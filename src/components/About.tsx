@@ -18,8 +18,8 @@ const timeline = [
   },
   {
     year: "NOW",
-    title: "FREELANCE FULL STACK",
-    org: "SignoEnergy / Proyectos Propios",
+    title: "DIGITAL SOLUTIONS",
+    org: "Freelance Projects",
     desc: "Desarrollo web y soluciones digitales para clientes reales. Construcción de plataformas comerciales optimizadas.",
     active: true,
   },
@@ -27,7 +27,7 @@ const timeline = [
     year: "2020 — 2025",
     title: "DOBLE GRADO: ING. TELECO + BUSINESS ANALYTICS",
     org: "Universidad Pontificia Comillas (ICAI-ICADE)",
-    desc: "Formación híbrida única: Base técnica profunda (Teleco) combinada con visión estratégica de negocio y análisis de datos.",
+    desc: "Formación híbrida única: Base técnica combinada con visión estratégica de negocio y análisis de datos.",
     active: false,
   },
 ];
@@ -49,12 +49,12 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="font-mono text-sm text-neutral-400 space-y-6 leading-relaxed border-l-2 border-white/10 pl-6">
+          <div className="font-mono text-sm text-neutral-300 space-y-6 leading-relaxed border-l-2 border-white/10 pl-6">
             <p>
-              Ingeniero de Telecomunicaciones graduado con una doble vertiente: técnica y analítica de negocio.
+              Ingeniero de Telecomunicaciones graduado con una doble visión: técnica y analítica de negocio.
             </p>
             <p>
-              Mi obsesión es aplicar <strong className="text-white">tecnología y datos</strong> para resolver problemas complejos. No me conformo con que funcione; busco la excelencia en la arquitectura y el impacto en el negocio.
+            <strong className="text-white">Ingeniería y analítica</strong> para transformar problemas complejos en soluciones eficientes. Mi estándar trasciende la funcionalidad técnica, buscando siempre la excelencia operativa y el impacto real.
             </p>
             <p>
               Actualmente combinando el Máster habilitante con experiencia real en Data Science y desarrollo web.
@@ -87,7 +87,7 @@ export default function About() {
                 {/* Contenido */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
                   <h3 className={`text-2xl md:text-3xl font-display font-bold uppercase tracking-tight ${
-                    item.active ? "text-white" : "text-neutral-500 group-hover:text-neutral-300"
+                    item.active ? "text-white" : "text-neutral-300 group-hover:text-neutral-300"
                   }`}>
                     {item.title}
                   </h3>

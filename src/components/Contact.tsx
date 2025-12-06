@@ -1,5 +1,5 @@
 "use client";
-import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa"; // Iconos
+import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa"; 
 
 export default function Contact() {
   return (
@@ -7,7 +7,7 @@ export default function Contact() {
       
       <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-20">
         
-        {/* --- COLUMNA IZQUIERDA: LLAMADA A LA ACCIÓN --- */}
+        
         <div className="md:w-1/2">
           <span className="text-xs font-mono text-orange-500 tracking-widest uppercase">
             // CONTACT_CHANNEL
@@ -38,7 +38,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* --- COLUMNA DERECHA: FORMULARIO BRUTALISTA --- */}
+        
         <div className="md:w-1/2 bg-[#0a0a0a] p-8 md:p-12 border border-white/5">
           <form className="flex flex-col gap-8">
             

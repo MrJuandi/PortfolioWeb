@@ -41,17 +41,17 @@ export default function CustomCursor() {
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[99999]">
       
-      {/* 1. PUNTO CENTRAL (TAMAÑO FORZADO EN PIXELES) */}
+
       <div 
         ref={cursorRef}
         className="fixed top-0 left-0 rounded-full"
         style={{
-          width: "20px",            // <--- TAMAÑO GRANDE
+          width: "20px",            
           height: "20px",
-          backgroundColor: "#ffffffff", // <--- NARANJA NEÓN (OrangeRed)
-          marginLeft: "-10px",      // Centrado (mitad de 20)
+          backgroundColor: "#ffffffff", 
+          marginLeft: "-10px",      
           marginTop: "-10px",
-          boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)" // Resplandor
+          boxShadow: "0 0 10px rgba(255, 255, 255, 1)" 
         }}
       />
 
@@ -60,12 +60,12 @@ export default function CustomCursor() {
         ref={followerRef}
         className="fixed top-0 left-0 rounded-full"
         style={{
-          width: "60px",            // <--- TAMAÑO GIGANTE
+          width: "60px",           
           height: "60px",
-          border: "2px solid rgba(255, 255, 255, 0.5)", // Borde naranja semi-transparente
-          marginLeft: "-30px",      // Centrado (mitad de 60)
+          border: "2px solid rgba(255, 255, 255, 1)", 
+          marginLeft: "-30px",      
           marginTop: "-30px",
-          transition: "width 0.2s, height 0.2s" // Por si quieres animarlo luego al hacer click
+          transition: "width 0.2s, height 0.2s" 
         }}
       />
       

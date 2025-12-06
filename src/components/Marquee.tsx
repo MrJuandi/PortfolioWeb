@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Marquee() {
   // Duplicamos el texto para que el loop sea infinito sin cortes
-  const text = "FULL STACK ENGINEERING — CREATIVE DEVELOPMENT — SYSTEM ARCHITECTURE — ";
+  const text = "TELECOMMUNICATION ENGINEERING — DATA ANALYTICS — SYSTEM ARCHITECTURE — ";
 
   return (
     <div className="w-full py-12 bg-[#050505] overflow-hidden border-y border-neutral-800 relative z-10">
@@ -28,7 +28,7 @@ export default function Marquee() {
       {/* Estilo para hacer el texto hueco (outline) */}
       <style jsx>{`
         .stroke-text {
-          -webkit-text-stroke: 1px rgba(70, 34, 0, 1);
+          -webkit-text-stroke: 1px rgba(68, 33, 0, 1);
         }
       `}</style>
     </div>

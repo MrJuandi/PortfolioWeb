@@ -6,10 +6,10 @@ import Image from "next/image";
 const projects = [
   {
     id: "01",
-    title: "SIGNOENERGY",
+    title: "SIGNO ENERGY",
     role: "FULL STACK ARCHITECTURE",
     description: "Transformación digital completa para comercializadora de energía. Desarrollo de plataforma web optimizada desde cero, superando las limitaciones de soluciones legacy.",
-    tech: ["NEXT.JS", "REACT", "TAILWIND", "UX/UI"],
+    tech: ["HTML", "CSS", "TAILWIND", "UX/UI"],
     stats: "PERFORMANCE: 99/100",
     color: "#1a1a1a", // Fondo oscuro
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
@@ -19,7 +19,7 @@ const projects = [
     title: "ENERGYA-VM",
     role: "DATA INTELLIGENCE & ML",
     description: "Infraestructura de datos crítica. Desarrollo de modelos predictivos en Python para forecasting de valor de cliente y pipelines ETL automatizados.", // [cite: 25, 26]
-    tech: ["PYTHON", "SQL", "SCIKIT-LEARN", "WAREHOUSING"],
+    tech: ["PYTHON", "SQL", "SCIKIT-LEARN", "PANDAS"],
     stats: "DATASETS: +1M ROWS",
     color: "#222222", // Un gris un poco más claro para diferenciar
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
@@ -124,8 +124,9 @@ export default function Projects() {
   return (
     <section ref={container} className="relative w-full bg-[#050505] mt-32 mb-32">
       
-      {/* Título flotante de la sección */}
-      <div className="sticky top-20 text-center mb-20 pointer-events-none z-0 opacity-50">
+
+
+      <div className="sticky top-20 text-center mb-20 pointer-events-none z-0">
         <h2 className="font-display text-[10vw] text-neutral-800 leading-none">WORKS</h2>
       </div>
 

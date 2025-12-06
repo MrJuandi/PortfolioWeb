@@ -1,9 +1,12 @@
+
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ededed;
 }
 
@@ -13,6 +16,7 @@ body {
   /* Esto asegura que la fuente por defecto no sea Times New Roman */
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden; /* Evita el scroll horizontal indeseado */
+  cursor: none;
 }
 
 /* El ruido de fondo */
