@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Projects from "@/components/Projects"; // <--- Aquí está la magia
+import Projects from "@/components/Projects"; 
 import Marquee from "@/components/Marquee";
 import Contact from "@/components/Contact";
 

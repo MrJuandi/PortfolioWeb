@@ -1,4 +1,4 @@
-import Metadata from "next";
+import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
@@ -19,7 +19,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${inter.className} ${anton.variable} bg-background text-foreground antialiased`}>
         <SpeedInsights />
-        {/* Cursor y UI siempre visibles y fijos */}
         <CustomCursor />
         
         <div className="bg-noise" />
