@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import Metadata from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
