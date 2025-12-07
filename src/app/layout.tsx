@@ -3,7 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
-import LenisWrapper from "@/components/LenisWrapper"; // <--- Importamos NUESTRO componente
+import LenisWrapper from "@/components/LenisWrapper"; 
 
 
 const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton" });
@@ -18,13 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${inter.className} ${anton.variable} bg-background text-foreground antialiased`}>
-        
+        <SpeedInsights />
         {/* Cursor y UI siempre visibles y fijos */}
         <CustomCursor />
         
         <div className="bg-noise" />
-
-        {/* El Scroll envuelve el contenido, pero ya no rompe el servidor */}
         <LenisWrapper>
           {children}
         </LenisWrapper>
