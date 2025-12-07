@@ -16,15 +16,12 @@ export default function CustomCursor() {
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      // Mover punto central
       cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     };
 
     const animate = () => {
-      // Física de seguimiento suave
       followerX += (mouseX - followerX) * 0.15;
       followerY += (mouseY - followerY) * 0.15;
-      // Mover anillo
       follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
       requestAnimationFrame(animate);
     };
@@ -39,9 +36,9 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[99999]">
+    // Añadimos "hidden md:block" para ocultar en móvil y mostrar solo en desktop
+    <div className="hidden md:block fixed top-0 left-0 w-full h-full pointer-events-none z-[99999]">
       
-
       <div 
         ref={cursorRef}
         className="fixed top-0 left-0 rounded-full"
@@ -55,7 +52,6 @@ export default function CustomCursor() {
         }}
       />
 
-      {/* 2. ANILLO SEGUIDOR (GIGANTE) */}
       <div 
         ref={followerRef}
         className="fixed top-0 left-0 rounded-full"

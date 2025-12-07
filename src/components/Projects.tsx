@@ -1,149 +1,202 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { FaTimes, FaExternalLinkAlt } from "react-icons/fa"; // Necesitas react-icons si no lo tienes: npm install react-icons
 
 const projects = [
   {
     id: "01",
-    title: "SIGNO ENERGY",
-    role: "FULL STACK ARCHITECTURE",
-    description: "Transformación digital completa para comercializadora de energía. Desarrollo de plataforma web optimizada desde cero, superando las limitaciones de soluciones legacy.",
-    tech: ["HTML", "CSS", "TAILWIND", "UX/UI"],
-    stats: "PERFORMANCE: 99/100",
-    color: "#1a1a1a", // Fondo oscuro
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
+    title: "SIGNOENERGY",
+    category: "WEB DEV",
+    description: "Plataforma comercial completa para el sector energético. Diseñada para convertir leads en clientes mediante una UX optimizada. Integra panel de gestión y analítica en tiempo real.",
+    tech: "NEXT.JS • REACT • TAILWIND",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    link: "https://signoenergy.com" // Pon aquí links reales si tienes
   },
   {
     id: "02",
     title: "ENERGYA-VM",
-    role: "DATA INTELLIGENCE & ML",
-    description: "Infraestructura de datos crítica. Desarrollo de modelos predictivos en Python para forecasting de valor de cliente y pipelines ETL automatizados.", // [cite: 25, 26]
-    tech: ["PYTHON", "SQL", "SCIKIT-LEARN", "PANDAS"],
-    stats: "DATASETS: +1M ROWS",
-    color: "#222222", // Un gris un poco más claro para diferenciar
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop"
+    category: "DATA ENG",
+    description: "Arquitectura de datos crítica. Pipelines ETL automatizados procesando millones de registros diarios. Modelos de Machine Learning para predicción de churn y valor de cliente.",
+    tech: "PYTHON • SQL • SCIKIT-LEARN",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+    link: "#"
   },
   {
     id: "03",
     title: "EMG BIO-SYSTEM",
-    role: "HARDWARE & IOT ENG.",
-    description: "Ingeniería de bajo nivel. Sistema portátil diseñado para la adquisición, procesamiento y visualización en tiempo real de señales electromiográficas.", // [cite: 33]
-    tech: ["C++", "EMBEDDED", "SIGNAL PROC.", "REAL-TIME"], // 
-    stats: "LATENCY: <10MS",
-    color: "#2a2a2a", // Gris más claro
-    image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2670&auto=format&fit=crop"
+    category: "HARDWARE",
+    description: "Sistema IoT de ingeniería biomédica. Captura señales electromiográficas (musculares) con latencia <10ms y las transmite vía Bluetooth a una app de visualización.",
+    tech: "C++ • EMBEDDED • IOT",
+    image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2670&auto=format&fit=crop",
+    link: "#"
+  },
+  {
+    id: "04",
+    title: "COMING SOON",
+    category: "R&D",
+    description: "Laboratorio de ideas. Próximos experimentos en Inteligencia Artificial Generativa y WebGL.",
+    tech: "UNKNOWN",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop",
+    link: "#"
   }
 ];
 
-// Componente individual de la Tarjeta
-const Card = ({ project, index, progress, range, targetScale }: any) => {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  });
+export default function Projects() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: targetRef });
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-85%"]);
 
-  // Efecto de escala: Las tarjetas de atrás se hacen un pelín más pequeñas
-  const scale = useTransform(progress, range, [1, targetScale]);
+  // Estado para controlar qué proyecto está abierto
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
+  // Bloquear el scroll del body cuando el modal está abierto
+  useEffect(() => {
+    if (selectedProject) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+  }, [selectedProject]);
 
   return (
-    <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
-      <motion.div 
-        style={{ scale, top: `calc(-5vh + ${index * 25}px)` }} 
-        className="relative flex flex-col w-[90vw] md:w-[1000px] h-[70vh] rounded-3xl overflow-hidden border border-white/10 origin-top bg-[#111]"
-      >
-        
-        {/* --- CONTENIDO DE LA TARJETA --- */}
-        <div className="relative h-full flex flex-col md:flex-row">
+    <>
+      {/* SECCIÓN PRINCIPAL */}
+      <section ref={targetRef} className="relative h-[300vh] bg-[#050505]">
+        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
           
-          {/* IZQUIERDA: DATOS TÉCNICOS */}
-          <div className="w-full md:w-[45%] p-8 md:p-12 flex flex-col justify-between z-10 bg-[#0a0a0a]/90 backdrop-blur-md border-r border-white/5">
-            
-            <div>
-              <div className="flex justify-between items-center mb-10">
-                <span className="font-mono text-xs text-orange-500 border border-orange-500/30 px-2 py-1 rounded">
-                  PROJECT_ID: {project.id}
-                </span>
-                <span className="font-mono text-xs text-neutral-500">{project.stats}</span>
+          <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20 mix-blend-difference">
+            <h2 className="text-3xl md:text-6xl font-display font-bold text-white uppercase tracking-tighter">
+              Selected <br/> <span className="text-neutral-500">Works (03)</span>
+            </h2>
+          </div>
+
+          {/* CINTA UNIFICADA */}
+          <motion.div 
+            style={{ x }} 
+            className="flex gap-6 md:gap-10 pl-6 md:pl-[20vw]"
+          >
+            {projects.map((project) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                onClick={() => setSelectedProject(project)} // AL HACER CLICK, ABRIMOS MODAL
+              />
+            ))}
+          </motion.div>
+
+          <div className="absolute bottom-10 left-6 md:left-10 text-white/50 text-[10px] font-mono animate-pulse">
+            SCROLL DOWN / CLICK TO EXPAND →
+          </div>
+        </div>
+      </section>
+
+      {/* --- MODAL (OVERLAY) --- */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-10 bg-black/80 backdrop-blur-md"
+            onClick={() => setSelectedProject(null)} // Click fuera cierra
+          >
+            <motion.div
+              initial={{ y: 50, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 50, opacity: 0, scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()} // Click dentro NO cierra
+              className="bg-[#111] border border-white/10 w-full max-w-5xl h-auto max-h-[90vh] overflow-y-auto rounded-xl flex flex-col md:flex-row relative"
+            >
+              
+              {/* Botón Cerrar */}
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-50 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+              >
+                <FaTimes />
+              </button>
+
+              {/* Lado Izquierdo: Imagen */}
+              <div className="w-full md:w-1/2 h-[300px] md:h-auto relative">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent md:bg-gradient-to-r" />
               </div>
 
-              <h3 className="text-4xl md:text-5xl font-display font-bold uppercase leading-none mb-4">
-                {project.title}
-              </h3>
-              
-              <p className="font-mono text-xs text-neutral-400 uppercase tracking-widest mb-8">
-                {project.role}
-              </p>
+              {/* Lado Derecho: Info Técnica */}
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
+                <div>
+                  <span className="text-orange-500 font-mono text-xs border border-orange-500/30 px-2 py-1 rounded">
+                    PROJECT_ID: {selectedProject.id}
+                  </span>
+                  
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white mt-6 mb-2 leading-none uppercase">
+                    {selectedProject.title}
+                  </h3>
+                  <span className="text-neutral-400 font-mono text-xs uppercase tracking-widest block mb-8">
+                    {selectedProject.category} // {selectedProject.tech}
+                  </span>
 
-              <p className="text-sm text-neutral-300 leading-relaxed font-light">
-                {project.description}
-              </p>
-            </div>
+                  <p className="text-neutral-300 font-light leading-relaxed text-sm md:text-base border-l-2 border-white/10 pl-4">
+                    {selectedProject.description}
+                  </p>
+                </div>
 
-            <div className="flex flex-wrap gap-2 mt-8">
-              {project.tech.map((t: string) => (
-                <span key={t} className="text-[10px] font-mono bg-white/5 px-3 py-2 rounded border border-white/5">
-                  {t}
-                </span>
-              ))}
-            </div>
+                <div className="mt-12">
+                  <a 
+                    href={selectedProject.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-white text-black px-6 py-3 font-bold uppercase tracking-widest text-xs hover:bg-orange-500 hover:text-white transition-all"
+                  >
+                    View Project <FaExternalLinkAlt />
+                  </a>
+                </div>
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+// --- TARJETA UNIFICADA ---
+const ProjectCard = ({ project, onClick }: any) => {
+  return (
+    <div 
+      onClick={onClick}
+      className="group relative w-[85vw] h-[50vh] md:w-[600px] md:h-[400px] bg-neutral-900 border border-white/10 overflow-hidden shrink-0 cursor-pointer"
+    >
+      <div className="absolute inset-0">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500" />
+      </div>
+
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black via-black/80 to-transparent translate-y-2 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <div className="flex justify-between items-end">
+          <div>
+            <span className="text-[10px] md:text-xs font-mono text-orange-500 mb-2 block">{project.tech}</span>
+            <h3 className="text-3xl md:text-4xl font-display font-bold text-white uppercase leading-none">{project.title}</h3>
           </div>
-
-          {/* DERECHA: IMAGEN VISUAL */}
-          <div className="relative w-full md:w-[55%] h-full group overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-            />
-            {/* Overlay para oscurecer un poco */}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            
-            {/* Botón Ver Más */}
-            <div className="absolute bottom-8 right-8 w-16 h-16 bg-white text-black rounded-full flex items-center justify-center font-bold text-xl opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-              ↗
-            </div>
+          <div className="w-10 h-10 border border-white rounded-full flex items-center justify-center text-white opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-sm">
+            +
           </div>
-
         </div>
-
-      </motion.div>
+      </div>
+      
+      <span className="absolute top-4 right-4 text-4xl md:text-6xl font-display font-bold text-white/5 group-hover:text-white/20 transition-colors">
+        {project.id}
+      </span>
     </div>
   );
 };
-
-export default function Projects() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start start', 'end end']
-  });
-
-  return (
-    <section ref={container} className="relative w-full bg-[#050505] mt-32 mb-32">
-      
-
-
-      <div className="sticky top-20 text-center mb-20 pointer-events-none z-0">
-        <h2 className="font-display text-[10vw] text-neutral-800 leading-none">WORKS</h2>
-      </div>
-
-      {projects.map((project, i) => {
-        // Cálculo matemático para el efecto de escala (stacking)
-        const targetScale = 1 - ((projects.length - i) * 0.05);
-        return (
-          <Card 
-            key={i} 
-            index={i} 
-            project={project} 
-            progress={scrollYProgress} 
-            range={[i * 0.25, 1]} 
-            targetScale={targetScale} 
-          />
-        );
-      })}
-    </section>
-  );
-}
