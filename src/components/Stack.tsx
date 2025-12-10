@@ -130,6 +130,15 @@ function Blade({ item, isActive, onClick }: { item: any, isActive: boolean, onCl
     <motion.div
       layout
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      data-interactive
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       className={`
         relative overflow-hidden cursor-pointer rounded-xl border border-white/10
         transition-[flex] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]

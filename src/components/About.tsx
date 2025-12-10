@@ -18,14 +18,14 @@ const timeline = [
   },
   {
     year: "NOW",
-    title: "FREELANCE FULL STACK",
-    org: "SignoEnergy / Proyectos Propios",
+    title: "FREELANCE DIGITAL SOLUTIONS",
+    org: "Freelance",
     desc: "Desarrollo web y soluciones digitales para clientes reales. Construcción de plataformas comerciales optimizadas.",
     active: true,
   },
   {
     year: "2020 — 2025",
-    title: "DOBLE GRADO: ING. TELECO + BUSINESS ANALYTICS",
+    title: "DOBLE GRADO: ING. TELECOMUNICACIÓN + BUSINESS ANALYTICS",
     org: "Universidad Pontificia Comillas (ICAI-ICADE)",
     desc: "Formación híbrida única: Base técnica profunda (Teleco) combinada con visión estratégica de negocio y análisis de datos.",
     active: false,
@@ -90,7 +90,7 @@ export default function About() {
                 {/* Contenido */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
                   {/* CAMBIO: Tamaño de título reducido en móvil */}
-                  <h3 className={`text-xl md:text-3xl font-display font-bold uppercase tracking-tight ${
+                  <h3 className={`text-xl md:text-3xl font-display font-bold uppercase tracking-[0.01em] ${
                     item.active ? "text-white" : "text-neutral-400 group-hover:text-white transition-colors"
                   }`}>
                     {item.title}

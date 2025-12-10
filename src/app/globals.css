@@ -1,8 +1,5 @@
-
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 :root {
@@ -17,6 +14,79 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden; /* Evita el scroll horizontal indeseado */
   cursor: none;
+}
+
+/* Evitar el cursor por defecto en elementos interactivos (usamos el custom) */
+a,
+button,
+[role="button"],
+input,
+textarea,
+select,
+[tabindex],
+[data-interactive],
+summary,
+label {
+  cursor: none !important;
+}
+
+/* Fuerza cursor custom también en el resto (evita dedito residual) */
+* {
+  cursor: none !important;
+}
+
+/* ELIMINAMOS LOS ESTILOS DE SCROLLBAR NARANJA QUE ENTRABAN EN CONFLICTO */
+
+/* Custom Scrollbar Blanco con GLOW INTENSO */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 1),
+    0 0 40px rgba(255, 255, 255, 0.8),
+    0 0 60px rgba(255, 255, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.4);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 1),
+    0 0 60px rgba(255, 255, 255, 1),
+    0 0 90px rgba(255, 255, 255, 0.7),
+    inset 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 40px rgba(255, 255, 255, 0.8),
+      0 0 60px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 1),
+      0 0 60px rgba(255, 255, 255, 1),
+      0 0 90px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.9) rgba(0, 0, 0, 0.5);
 }
 
 /* El ruido de fondo */
