@@ -19,10 +19,10 @@ export default function Hero() {
     <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-[#030303]">
 
       {/* GRADIENTE DE FONDO PREMIUM */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 transform-gpu">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#050505] to-[#0f0f12]" />
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/8 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[120px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/8 rounded-full blur-[150px] transform-gpu will-change-transform" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[120px] transform-gpu will-change-transform" />
       </div>
 
       {/* GRID DE FONDO ELEGANTE */}
@@ -65,11 +65,11 @@ export default function Hero() {
       {/* TEXTO GRANDE DE FONDO - ENGINEER */}
       <motion.div
         style={{ y: yTextBack, opacity, scale }}
-        className="absolute z-0 pointer-events-none
+        className="absolute z-0 pointer-events-none transform-gpu
           top-[30vh] left-[3vw]
           md:top-[28vh] md:left-[5vw]"
       >
-        <h1 className="font-display font-black leading-none text-transparent
+        <h1 className="font-display font-black leading-none text-transparent antialiased transform-gpu
           text-[20vw] md:text-[16vw] lg:text-[14vw] 2xl:text-[15rem]
           [-webkit-text-stroke:1px_rgba(255,255,255,0.08)]"
         >
@@ -103,7 +103,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-display font-black leading-none text-white tracking-[-0.02em]
+            className="font-display font-black leading-none text-white tracking-[-0.02em] antialiased transform-gpu
               text-[13vw] md:text-[10vw] lg:text-[9vw] xl:text-[8vw] 2xl:text-[150px]"
           >
             JUAN DIEGO
@@ -113,7 +113,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="font-display font-black leading-none tracking-[-0.02em] mt-4
+            className="font-display font-black leading-none tracking-[-0.02em] mt-4 antialiased transform-gpu
               text-[13vw] md:text-[10vw] lg:text-[9vw] xl:text-[8vw] 2xl:text-[150px]
               text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.5)]"
           >
@@ -140,11 +140,11 @@ export default function Hero() {
       {/* TEXTO GRANDE DE FONDO - ANALYTICS */}
       <motion.div
         style={{ y: yTextFront, opacity }}
-        className="absolute z-0 pointer-events-none
+        className="absolute z-0 pointer-events-none transform-gpu
           bottom-[18vh] right-[3vw]
           md:bottom-[15vh] md:right-[5vw]"
       >
-        <h1 className="font-display font-black leading-none text-transparent
+        <h1 className="font-display font-black leading-none text-transparent antialiased transform-gpu
           text-[18vw] md:text-[14vw] lg:text-[12vw] 2xl:text-[13rem]
           [-webkit-text-stroke:1px_rgba(255,255,255,0.06)]"
         >
