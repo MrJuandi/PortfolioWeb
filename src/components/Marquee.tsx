@@ -2,35 +2,25 @@
 import { motion } from "framer-motion";
 
 export default function Marquee() {
-  // Duplicamos el texto para que el loop sea infinito sin cortes
   const text = "TELECOMMUNICATION ENGINEERING — DATA ANALYTICS — SYSTEM ARCHITECTURE — ";
 
   return (
-    <div className="w-full py-12 bg-[#050505] overflow-hidden border-y border-neutral-800 relative z-10">
-      {/* Contenedor que se mueve */}
+    <div className="w-full py-10 bg-[#050505] overflow-hidden border-y border-neutral-800/50 relative z-10">
       <motion.div
         className="flex whitespace-nowrap"
-        animate={{ x: [0, -1000] }} // Mueve hacia la izquierda
+        animate={{ x: [0, -1000] }}
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 20, // Velocidad (más bajo = más rápido)
+          duration: 25,
         }}
       >
-        {/* Repetimos el texto varias veces para cubrir pantallas grandes */}
         {[...Array(4)].map((_, i) => (
-          <h2 key={i} className="text-6xl font-display text-transparent stroke-text font-bold tracking-tighter mr-8">
+          <h2 key={i} className="text-5xl md:text-6xl font-display text-neutral-800 font-bold tracking-tight mr-8">
             {text}
           </h2>
         ))}
       </motion.div>
-      
-      {/* Estilo para hacer el texto hueco (outline) */}
-      <style jsx>{`
-        .stroke-text {
-          -webkit-text-stroke: 1px rgba(68, 33, 0, 1);
-        }
-      `}</style>
     </div>
   );
 }

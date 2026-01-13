@@ -16,7 +16,7 @@ export default function Preloader() {
       setCounter((prev) => {
         if (prev < 100) {
           // Incremento aleatorio para que parezca carga real
-          return prev + Math.floor(Math.random() * 16) + 5; 
+          return prev + Math.floor(Math.random() * 16) + 5;
         } else {
           clearInterval(interval);
           return 100;
@@ -47,45 +47,30 @@ export default function Preloader() {
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[9999] bg-[#050505] text-white flex flex-col items-center justify-center cursor-wait"
         >
-          
-          {/* CONTENIDO DEL PRELOADER */}
-          <div className="w-full max-w-md px-6">
-            
-            {/* Cabecera Técnica */}
-            <div className="flex justify-between items-end mb-2 font-mono text-xs text-neutral-500">
-                <span>SYSTEM_BOOT_SEQUENCE</span>
-                <span>V.4.0</span>
-            </div>
 
-            {/* Porcentaje Gigante */}
-            <h1 className="text-8xl md:text-9xl font-black text-white leading-none mb-4">
+          {/* CONTENIDO DEL PRELOADER */}
+          <div className="w-full max-w-md px-6 text-center">
+
+            {/* Porcentaje Grande */}
+            <h1 className="text-7xl md:text-8xl font-black text-white leading-none mb-6">
               {counter > 100 ? 100 : counter}%
             </h1>
 
             {/* Barra de Progreso */}
-            <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden mb-2">
-                <motion.div 
-                    className="h-full bg-orange-500"
-                    initial={{ width: "0%" }}
-                    animate={{ width: `${counter}%` }}
-                />
-            </div>
-
-            {/* Textos de Carga Aleatorios */}
-            <div className="flex justify-between font-mono text-[10px] text-orange-500 uppercase tracking-widest">
-                <span>
-                    {counter < 40 && "Initializing Core..."}
-                    {counter >= 40 && counter < 80 && "Loading Modules..."}
-                    {counter >= 80 && "Deploying Stack..."}
-                </span>
-                <span className="animate-pulse">_PROCESSING</span>
+            <div className="w-full h-[2px] bg-neutral-800 overflow-hidden">
+              <motion.div
+                className="h-full bg-white"
+                initial={{ width: "0%" }}
+                animate={{ width: `${counter}%` }}
+                transition={{ ease: "easeOut" }}
+              />
             </div>
 
           </div>
 
           {/* Ruido de fondo (Opcional, si te gusta el efecto grano) */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-          
+
         </motion.div>
       )}
     </AnimatePresence>
