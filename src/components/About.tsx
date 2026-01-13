@@ -6,7 +6,7 @@ const timeline = [
     year: "NOW",
     title: "MSc TELECOMMUNICATIONS ENGINEERING",
     org: "Comillas Pontifical University (ICAI)",
-    desc: "Specialization in Advanced Signal Processing, Cybersecurity, and Machine Learning. Focus on real-time bio-signal processing (EMG) and spectral analysis systems.",
+    desc: "Specialization in Advanced Signal Processing, Cybersecurity, and Machine Learning.",
     active: true,
   },
   {
@@ -63,9 +63,12 @@ export default function About() {
               Experienced in designing scalable algorithms, optimizing data pipelines, and developing full-stack solutions that align technical precision with business objectives.
             </p>
 
-            <button className="px-6 py-3 bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all w-fit mt-4">
-              Download CV
-            </button>
+            <a
+              href="#contact"
+              className="px-6 py-3 bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all w-fit mt-4 inline-block"
+            >
+              Contact Me
+            </a>
           </div>
         </div>
 
