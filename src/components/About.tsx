@@ -67,7 +67,7 @@ export default function About() {
               MSc Telecommunications Engineer with a dual background in Business Analytics (ICAI-ICADE).
             </p>
             <p>
-              I combine <strong className="text-white">technical rigor</strong> with <strong className="text-white">strategic business management</strong> to solve complex problems. My expertise lies in bridging the gap between engineering systems and data-driven decision making.
+              I combine <strong className="text-white">technical depth</strong> with <strong className="text-white"> business strategy</strong> to build effective solutions. My focus lies in bridging the gap between technical systems and decision making.
             </p>
             <p>
               Experienced in designing scalable algorithms, optimizing data pipelines, and developing full-stack solutions that align technical precision with business objectives.
