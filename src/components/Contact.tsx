@@ -18,7 +18,7 @@ export default function Contact() {
           </h2>
 
           <p className="mt-8 text-base md:text-lg text-gray-400 max-w-lg leading-relaxed">
-            Whether you have a complex engineering challenge or are looking for a strategic partner in Data & Analytics, I am ready to talk. Currently based in Madrid, but open to relocation for the right opportunity.
+            Whether you have a complex challenge or are looking for a strategic partner, I am ready to talk. Currently based in Madrid, but open to relocation for the right opportunity.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Contact() {
 
       {/* FOOTER */}
       <div className="container mx-auto px-4 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-neutral-600 uppercase">
-        <p>© 2025 JUAN DIEGO DÍAZ. ENGINEER & ANALYST.</p>
+        <p>© 2026 JUAN DIEGO DÍAZ HIDALGO. ENGINEER & ANALYST.</p>
         <p>MADRID, SPAIN</p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

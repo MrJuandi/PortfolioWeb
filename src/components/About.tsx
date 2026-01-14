@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLenis } from "@studio-freight/react-lenis";
 
 const timeline = [
   {
@@ -33,6 +34,15 @@ const timeline = [
 ];
 
 export default function About() {
+  const lenis = useLenis();
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection && lenis) {
+      lenis.scrollTo(contactSection, { duration: 1.5 });
+    }
+  };
+
   return (
     <section className="relative w-full bg-[#050505] text-white py-20 md:py-32 z-10 border-t border-white/10">
       {/* CAMBIO: flex-col para móvil por defecto, lg:flex-row para escritorio */}
@@ -63,12 +73,12 @@ export default function About() {
               Experienced in designing scalable algorithms, optimizing data pipelines, and developing full-stack solutions that align technical precision with business objectives.
             </p>
 
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all w-fit mt-4 inline-block"
+            <button
+              onClick={scrollToContact}
+              className="px-6 py-3 bg-white text-black font-bold text-[10px] md:text-xs uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all w-fit mt-4 cursor-pointer"
             >
               Contact Me
-            </a>
+            </button>
           </div>
         </div>
 

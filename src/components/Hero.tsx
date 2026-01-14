@@ -53,7 +53,7 @@ export default function Hero() {
         className="absolute top-8 left-0 w-full flex justify-between px-8 md:px-12 z-50"
       >
         <div className="text-[10px] md:text-xs tracking-[0.25em] text-neutral-400 uppercase font-light">
-          Juan Diego Díaz<br />
+          Juan Diego Díaz Hidalgo<br />
           <span className="text-blue-400/70">Engineer & Data Strategist</span>
         </div>
         <div className="text-[10px] md:text-xs tracking-[0.25em] text-right text-neutral-400 uppercase font-light">
@@ -117,7 +117,7 @@ export default function Hero() {
               text-[13vw] md:text-[10vw] lg:text-[9vw] xl:text-[8vw] 2xl:text-[150px]
               text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.5)]"
           >
-            DÍAZ
+            DÍAZ HIDALGO
           </motion.h2>
 
           {/* DESCRIPCIÓN */}
