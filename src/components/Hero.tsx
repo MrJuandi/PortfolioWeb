@@ -54,7 +54,7 @@ export default function Hero() {
       >
         <div className="text-[10px] md:text-xs tracking-[0.25em] text-neutral-400 uppercase font-light">
           Juan Diego Díaz Hidalgo<br />
-          <span className="text-blue-400/70">Engineer & Data Strategist</span>
+          <span className="text-blue-400/70">Engineer & Data Analyst</span>
         </div>
         <div className="text-[10px] md:text-xs tracking-[0.25em] text-right text-neutral-400 uppercase font-light">
           Based in Madrid<br />
