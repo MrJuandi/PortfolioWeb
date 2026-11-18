@@ -1,4 +1,5 @@
 import HeroIndex from '@/components/HeroIndex';
+import HeroGrid from '@/components/HeroGrid';
 import Showcase from '@/components/Showcase';
 import Footer from '@/components/Footer';
 import { experience, education, tools, type Entry } from '@/content/path';
@@ -28,7 +29,7 @@ export default function Home() {
     <main id="main">
       {/* HERO */}
       <section className="hero" id="top">
-        <div className="hero__grid" aria-hidden="true" />
+        <HeroGrid />
         <div className="hero__inner wrap">
           <p className="eyebrow reveal">Engineer — Madrid</p>
           <h1 className="hero__title">
