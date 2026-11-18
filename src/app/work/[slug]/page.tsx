@@ -23,7 +23,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   return (
     <main id="main" className="case">
       <div className="wrap" id="top">
-        <Link className="case__back" href="/#work">← All work</Link>
+        <a className="case__back" href="/#work">← All work</a>
 
         <header className="case__head">
           <div>

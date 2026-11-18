@@ -2,9 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { useTransitionRouter } from 'next-view-transitions';
 import Lenis from 'lenis';
-import { projectScrollTop } from '@/lib/showcase';
 
 let lenis: Lenis | null = null;
 const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,7 +11,6 @@ const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').match
 // smooth scroll, in-page anchors, scroll reveals, timeline rail and magnetic buttons.
 export default function Effects() {
   const pathname = usePathname();
-  const router = useTransitionRouter();
 
   // Smooth scroll (once)
   useEffect(() => {
@@ -25,28 +22,22 @@ export default function Effects() {
     return () => { cancelAnimationFrame(raf); lenis?.destroy(); lenis = null; };
   }, []);
 
-  // In-page anchors: smooth on the home page, transition to the home page elsewhere
+  // Keep scrolling within this page. Links to Snell load its HTML normally.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-      const a = (e.target as Element).closest?.('a[href^="/#"], a[href^="#"]') as HTMLAnchorElement | null;
-      if (!a) return;
-      const hash = a.getAttribute('href')!.replace(/^\//, '');
-      if (window.location.pathname !== '/') { e.preventDefault(); router.push('/' + hash); return; }
-      const m = /^#project-(\d+)$/.exec(hash);
-      const pinned = m ? projectScrollTop(Number(m[1]) - 1) : null;
-      const el = hash === '#top' ? null : document.querySelector(hash);
-      if (hash !== '#top' && !el && pinned === null) return;
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const anchor = (e.target as Element).closest?.('a[href^="#"]');
+      const hash = anchor?.getAttribute('href');
+      if (!hash || hash === '#') return;
+      const target = document.getElementById(hash.slice(1));
+      if (!target || !lenis) return;
       e.preventDefault();
-      const target = pinned ?? (hash === '#top' ? 0 : (el as HTMLElement));
-      if (lenis) lenis.scrollTo(target as number | HTMLElement, { offset: typeof target === 'number' ? 0 : -72 });
-      else if (typeof target === 'number') window.scrollTo({ top: target, behavior: 'smooth' });
-      else target.scrollIntoView({ behavior: 'smooth' });
-      history.replaceState(null, '', hash === '#top' ? '/' : hash);
+      lenis.scrollTo(target, { offset: -72 });
+      history.replaceState(null, '', hash);
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
-  }, [router]);
+  }, []);
 
   // Per page: reveals, timeline rail, magnetic buttons
   useEffect(() => {

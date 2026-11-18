@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Link } from 'next-view-transitions';
 
 const links = [
   { href: '/#path', id: 'path', label: 'Path' },
@@ -47,12 +46,12 @@ export default function Nav() {
 
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${hidden ? ' is-hidden' : ''}`}>
-      <Link className="nav__brand" href="/" aria-label="Juan Diego Díaz Hidalgo — home">
+      <a className="nav__brand" href="/" aria-label="Juan Diego Díaz Hidalgo — home">
         <span className="nav__mark" aria-hidden="true">
           <svg viewBox="0 0 64 64"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="square" /></svg>
         </span>
         <span className="nav__name">Juan Diego Díaz Hidalgo</span>
-      </Link>
+      </a>
       <nav className="nav__links" aria-label="Primary">
         {links.map((l, i) => (
           <a key={l.id} href={l.href} className={pathname === '/' && active === l.id ? 'is-active' : undefined}>
