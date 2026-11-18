@@ -6,7 +6,6 @@ import { Instrument_Serif } from 'next/font/google';
 import { ViewTransitions } from 'next-view-transitions';
 import Nav from '@/components/Nav';
 import Effects from '@/components/Effects';
-import Cursor from '@/components/Cursor';
 import './globals.css';
 
 const serif = Instrument_Serif({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'], variable: '--font-serif' });
@@ -34,7 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           {children}
           <Effects />
-          <Cursor />
           <SpeedInsights />
         </body>
       </html>
