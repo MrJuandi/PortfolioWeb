@@ -20,8 +20,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'nightjar',
-    title: 'Nightjar',
+    slug: 'pandion',
+    title: 'Pandion',
     year: 'Since Sep 2026',
     status: 'Work in progress',
     description:
@@ -29,15 +29,15 @@ export const projects: Project[] = [
     detail:
       'Built so far: fire-spread and aircraft models, scenarios from Copernicus EMS fires, a PPO training pipeline and an interactive 3D replay workspace over Sentinel-2 imagery.',
     tags: ['Python', 'PyTorch', 'Reinforcement learning', 'Geospatial data', 'Three.js'],
-    video: '/media/nightjar.mp4',
-    image: '/media/nightjar.jpg',
+    video: '/media/pandion.mp4',
+    image: '/media/pandion.jpg',
     caption: 'Replay workspace — aircraft drops against an active fire front, on Sentinel-2 imagery and real terrain.',
     sections: [
       {
         label: 'The question',
         body: [
           'Air support in a wildfire is a sequence of decisions made with information that arrives late and incomplete: where to drop, when to refill, which front to hold.',
-          'Nightjar asks whether a learned policy can make those decisions better than transparent rules when every controller sees exactly the same delayed observations.',
+          'Pandion asks whether a learned policy can make those decisions better than transparent rules when every controller sees exactly the same delayed observations.',
         ],
       },
       {

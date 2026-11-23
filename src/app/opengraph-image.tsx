@@ -9,6 +9,6 @@ export default function Image() {
     kicker: 'Engineer — Madrid',
     title: 'Juan Diego Díaz Hidalgo',
     sub: 'I build ML models, data pipelines and the software around them.',
-    footer: 'Nightjar · LOSSIA · Halfline',
+    footer: 'Pandion · LOSSIA · Halfline',
   });
 }
