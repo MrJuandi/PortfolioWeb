@@ -31,7 +31,7 @@ export const projects: Project[] = [
     tags: ['Python', 'PyTorch', 'Reinforcement learning', 'Geospatial data', 'Three.js'],
     video: '/media/pandion.mp4',
     image: '/media/pandion.jpg',
-    caption: 'Replay workspace — aircraft drops against an active fire front, on Sentinel-2 imagery and real terrain.',
+    caption: 'Demo — the same fire under three controllers, then replayed in the 3D workspace on Sentinel-2 imagery and real terrain.',
     sections: [
       {
         label: 'The question',
@@ -52,6 +52,44 @@ export const projects: Project[] = [
         label: 'Where it stands',
         body: [
           'An early research prototype, not an operational tool. Physical validation is still open, and results are reported against baselines, failures and worst cases included.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'pulse',
+    title: 'Pulse',
+    year: 'Nov 2026',
+    status: 'Shipped',
+    description:
+      'A native macOS menu bar app that shows how much quota is left in Codex, Claude Code and Gemini in Antigravity, with a daily token chart built from each tool’s local history.',
+    detail:
+      'Shipped as a universal macOS app for Apple silicon and Intel, built only with Apple tools and system frameworks: SwiftUI, Swift Charts and AppKit, with no third-party packages.',
+    tags: ['Swift', 'SwiftUI', 'Swift Charts', 'AppKit', 'macOS'],
+    video: '/media/pulse.mp4',
+    image: '/media/pulse.jpg',
+    caption: 'Demo — remaining quota in the menu bar and tokens per day by provider. Usage figures are demo data.',
+    link: { href: 'https://github.com/MrJuandi/pulse', label: 'GitHub' },
+    sections: [
+      {
+        label: 'The problem',
+        body: [
+          'Codex, Claude Code and Gemini each enforce their own usage windows, from five hours to a week, and each reports them in its own place.',
+          'Working across all three, the first sign of a limit is usually hitting it in the middle of a task.',
+        ],
+      },
+      {
+        label: 'What I built',
+        body: [
+          'A menu bar item that shows the percentage left in each provider’s tightest active window, and a popover with a combined daily token chart, per-provider history, quota meters and a breakdown by model.',
+          'Separate Swift readers for each source: Codex’s rate-limit response through its app-server protocol, Claude Code’s usage panel probed from an isolated directory with hooks, tools and MCP servers disabled, and Antigravity’s loopback service and local conversation databases.',
+        ],
+      },
+      {
+        label: 'Where it stands',
+        body: [
+          'Released on GitHub as a universal ZIP for macOS 15 or later. Builds are ad hoc signed and not notarized, and the local protocols it reads can change between provider versions.',
+          'Pulse uses the sessions the tools already have. It does not copy login credentials or publish local usage.',
         ],
       },
     ],
