@@ -1,4 +1,4 @@
-// Projects shown on the home page (index + showcase) and as /work/[slug] case studies.
+// Projects shown as /work/[slug] case studies. The homepage index lives in src/home/index.html.
 // Newest or most relevant first. Media files live in /public/media.
 
 export type Section = { label: string; body: string[] };
@@ -170,6 +170,4 @@ export const projects: Project[] = [
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
-export const shortStatus = (s: string) => (/progress/i.test(s) ? 'In progress' : /shipped/i.test(s) ? 'Shipped' : s);
 export const isLive = (s: string) => /progress/i.test(s);
-export const yearOf = (s: string) => s.match(/\d{4}/)?.[0] ?? '';

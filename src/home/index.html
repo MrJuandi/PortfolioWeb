@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Engineer in Madrid. I build ML models, data pipelines and the software around them." />
+  <meta property="og:title" content="Juan Diego Díaz Hidalgo — Engineer" />
+  <meta property="og:description" content="Engineer in Madrid. I build ML models, data pipelines and the software around them." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://juandiegodiaz.vercel.app/opengraph-image" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <title>Juan Diego Díaz Hidalgo — Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>/* home:styles */</style>
+</head>
+<body>
+  <a class="burger magnet" href="#contact" id="burger" aria-label="Menu"><i></i><i></i></a>
+
+  <header class="nav">
+    <a class="brand" href="#top">Juan Diego Díaz Hidalgo</a>
+    <nav class="nav__links"><a href="#work">Work</a><a href="#path">Path</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <canvas class="hero__fx" id="fx" aria-hidden="true"></canvas>
+      <h1>Juan Diego<br />Díaz Hidalgo</h1>
+      <p class="hero__role">Engineer · ML, data &amp; software</p>
+      <p class="hero__location">Madrid, Spain</p>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro" id="about">
+      <p class="intro__big" id="big">I build ML models, data pipelines and the software around them — and get them in front of the people who make the decisions.</p>
+      <p class="intro__side">Telecom engineer with a business analytics background. MSc at ICAI; previously at BCG X and Enérgya-VM.</p>
+      <a class="intro__btn magnet round" href="#contact"><span>About me</span></a>
+    </section>
+
+    <!-- PATH -->
+    <section class="path" id="path">
+      <div class="path__head"><span class="small">PATH</span></div>
+      <div class="vt-cols">
+        <div class="vt">
+          <h3 class="vt__title">Professional</h3>
+          <ol class="vt__list">
+            <li class="vt__item"><span class="vt__dot"></span><span class="vt__when">Jun — Aug 2026</span><strong>BCG X</strong><span class="vt__role">Visiting Forward Deployed AI Scientist · Boston Consulting Group, Madrid</span></li>
+            <li class="vt__item"><span class="vt__dot"></span><span class="vt__when">Jun 2025 — Apr 2026</span><strong>Enérgya-VM</strong><span class="vt__role">Data Analyst Intern · Energy retail, Madrid</span></li>
+          </ol>
+        </div>
+        <div class="vt">
+          <h3 class="vt__title">Education</h3>
+          <ol class="vt__list">
+            <li class="vt__item is-now vt__item--edu"><span class="vt__dot"></span><span class="vt__when">2025 — Now</span><strong>MSc Telecommunications Engineering</strong><span class="vt__role">Comillas ICAI, Madrid</span></li>
+            <li class="vt__item vt__item--edu"><span class="vt__dot"></span><span class="vt__when">2020 — 2025</span><strong>Double Bachelor’s in Telecom Engineering &amp; Business Analytics</strong><span class="vt__role">Comillas ICAI-ICADE, Madrid</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="path__tools"><span>Python</span><span>SQL</span><span>Machine learning</span><span>Power BI</span><span>Next.js</span><span>GCP</span><span>Kubernetes</span></div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <h2 class="work__head" id="work-title">Selected work</h2>
+      <div class="work__list">
+        <details class="project" name="selected-work">
+          <summary class="project__summary">
+            <span class="project__title">Pandion</span>
+            <span class="project__status">Work in progress · 2026</span>
+            <span class="project__sign" aria-hidden="true"></span>
+          </summary>
+          <div class="project__body">
+            <p>A reinforcement-learning policy decides where and when a water-dropping aircraft acts, evaluated against transparent baselines on real terrain from past fires.</p>
+            <a class="project__link" href="/work/pandion" aria-label="Read the Pandion case study">Case study ↗</a>
+            <video class="project__demo" data-src="/media/pandion.mp4" poster="/media/pandion.jpg" width="1920" height="1080"
+              controls muted playsinline preload="none" aria-label="Pandion demo"></video>
+          </div>
+        </details>
+        <details class="project" name="selected-work">
+          <summary class="project__summary">
+            <span class="project__title">Pulse</span>
+            <span class="project__status">Shipped · 2026</span>
+            <span class="project__sign" aria-hidden="true"></span>
+          </summary>
+          <div class="project__body">
+            <p>A macOS menu bar app that shows the quota left in Codex, Claude Code and Gemini, with a daily token chart from each tool’s local history.</p>
+            <a class="project__link" href="/work/pulse" aria-label="Read the Pulse case study">Case study ↗</a>
+            <video class="project__demo" data-src="/media/pulse.mp4" poster="/media/pulse.jpg" width="1920" height="1080"
+              controls muted playsinline preload="none" aria-label="Pulse demo"></video>
+          </div>
+        </details>
+        <details class="project" name="selected-work">
+          <summary class="project__summary">
+            <span class="project__title">LOSSIA</span>
+            <span class="project__status">Shipped · Hackathon · 2026</span>
+            <span class="project__sign" aria-hidden="true"></span>
+          </summary>
+          <div class="project__body">
+            <p>Ranks a 91-station engine line by estimated engines lost per day, replacing a manual Excel exercise with one criterion for every plant.</p>
+            <a class="project__link" href="/work/lossia" aria-label="Read the LOSSIA case study">Case study ↗</a>
+            <video class="project__demo" data-src="/media/lossia.mp4" poster="/media/lossia.jpg" width="1920" height="1080"
+              controls muted playsinline preload="none" aria-label="LOSSIA demo"></video>
+          </div>
+        </details>
+        <details class="project" name="selected-work">
+          <summary class="project__summary">
+            <span class="project__title">Halfline</span>
+            <span class="project__status">Work in progress · 2026</span>
+            <span class="project__sign" aria-hidden="true"></span>
+          </summary>
+          <div class="project__body">
+            <p>Strips the bookmaker margin from football odds and measures its own models against the market, out of sample.</p>
+            <a class="project__link" href="/work/halfline" aria-label="Read the Halfline case study">Case study ↗</a>
+            <video class="project__demo" data-src="/media/halfline.mp4" poster="/media/halfline.jpg" width="1920" height="1080"
+              controls muted playsinline preload="none" aria-label="Halfline demo"></video>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="curve"><div class="curve__shape" id="curve"></div></div>
+    <footer class="footer" id="contact">
+      <div class="footer__top">
+        <span class="footer__mark"><svg viewBox="0 0 64 64"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="square"/></svg></span>
+        <h2>Let’s work<br />together</h2>
+      </div>
+      <div class="footer__line"><div class="footer__cta"><a class="round magnet" href="mailto:juandiegodiazh@hotmail.es"><span>Get in touch</span></a></div></div>
+      <div class="footer__pills">
+        <a class="pill magnet" href="mailto:juandiegodiazh@hotmail.es"><span>juandiegodiazh@hotmail.es</span></a>
+        <a class="pill magnet" href="https://www.linkedin.com/in/juan-diego-diaz-hidalgo" target="_blank" rel="noopener"><span>LinkedIn</span></a>
+      </div>
+      <div class="footer__bottom">
+        <div><span class="small">BASED IN</span><span>Madrid, Spain</span></div>
+        <div><span class="small">SOCIALS</span><nav><a href="https://www.linkedin.com/in/juan-diego-diaz-hidalgo" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/MrJuandi" target="_blank" rel="noopener">GitHub</a></nav></div>
+      </div>
+    </footer>
+  </main>
+
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>/* home:script */</script>
+</body>
+</html>
