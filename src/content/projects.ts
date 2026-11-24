@@ -142,7 +142,7 @@ export const projects: Project[] = [
     tags: ['Python', 'scikit-learn', 'Flask', 'React', 'TypeScript', 'd3'],
     video: '/media/halfline.mp4',
     image: '/media/halfline.jpg',
-    caption: 'Product walkthrough — matchday, model evaluation, match sheet and styles map.',
+    caption: 'Demo — removing the bookmaker margin, a match sheet, and every model scored against the market.',
     sections: [
       {
         label: 'The question',
