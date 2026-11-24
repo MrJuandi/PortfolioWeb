@@ -2,6 +2,10 @@
 
 Personal site, live at [juandiegodiaz.vercel.app](https://juandiegodiaz.vercel.app). Built with Next.js 14 (App Router), React, TypeScript and Lenis, and deployed on Vercel.
 
+[![CI](https://github.com/MrJuandi/PortfolioWeb/actions/workflows/ci.yml/badge.svg)](https://github.com/MrJuandi/PortfolioWeb/actions/workflows/ci.yml)
+
+![Homepage](docs/home.jpg)
+
 ## Run
 
 ```bash
