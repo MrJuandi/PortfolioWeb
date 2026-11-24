@@ -46,7 +46,7 @@ export default function Nav() {
 
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${hidden ? ' is-hidden' : ''}`}>
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Snell is served as an HTML document. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- the homepage is served as an HTML document. */}
       <a className="nav__brand" href="/" aria-label="Juan Diego Díaz Hidalgo — home">
         <span className="nav__mark" aria-hidden="true">
           <svg viewBox="0 0 64 64"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="square" /></svg>
@@ -62,7 +62,7 @@ export default function Nav() {
       </nav>
       <div className="nav__end">
         <span className="nav__clock mono" aria-label="Local time in Madrid">MAD <span>{time}</span></span>
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Snell is served as an HTML document. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- the homepage is served as an HTML document. */}
         <a className="btn btn--small" href="/#contact">Get in touch</a>
       </div>
     </header>

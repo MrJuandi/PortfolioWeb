@@ -8,7 +8,7 @@ let lenis: Lenis | null = null;
 const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Page-wide behaviour that works on server-rendered markup:
-// smooth scroll, in-page anchors, scroll reveals, timeline rail and magnetic buttons.
+// smooth scroll, in-page anchors, scroll reveals and magnetic buttons.
 export default function Effects() {
   const pathname = usePathname();
 
@@ -22,7 +22,7 @@ export default function Effects() {
     return () => { cancelAnimationFrame(raf); lenis?.destroy(); lenis = null; };
   }, []);
 
-  // Keep scrolling within this page. Links to Snell load its HTML normally.
+  // Keep scrolling within this page. Links to the homepage load its HTML normally.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -39,13 +39,13 @@ export default function Effects() {
     return () => document.removeEventListener('click', onClick);
   }, []);
 
-  // Per page: reveals, timeline rail, magnetic buttons
+  // Per page: reveals, magnetic buttons
   useEffect(() => {
     if (lenis) lenis.resize();
     const cleanups: (() => void)[] = [];
 
     // Reveal on scroll
-    const els = document.querySelectorAll<HTMLElement>('.reveal, .line');
+    const els = document.querySelectorAll<HTMLElement>('.reveal');
     const io = new IntersectionObserver((entries) => entries.forEach((en) => {
       if (!en.isIntersecting) return;
       en.target.classList.add('is-in');
@@ -58,26 +58,6 @@ export default function Effects() {
       io.observe(el);
     });
     cleanups.push(() => io.disconnect());
-
-    // Timeline rails fill and nodes light up
-    const rails = document.querySelectorAll<HTMLElement>('.tl');
-    if (rails.length) {
-      const update = () => {
-        const mark = window.innerHeight * 0.65;
-        rails.forEach((tl) => {
-          const r = tl.getBoundingClientRect();
-          const p = Math.min(1, Math.max(0, (mark - r.top) / r.height));
-          tl.style.setProperty('--p', reduce() ? '1' : p.toFixed(4));
-          tl.querySelectorAll('.tl__node').forEach((n) => {
-            n.parentElement?.classList.toggle('is-passed', n.getBoundingClientRect().top < mark);
-          });
-        });
-      };
-      update();
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); });
-    }
 
     // Magnetic buttons
     if (!reduce() && window.matchMedia('(hover: hover)').matches) {

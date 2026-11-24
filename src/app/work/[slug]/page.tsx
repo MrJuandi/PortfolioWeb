@@ -23,7 +23,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   return (
     <main id="main" className="case">
       <div className="wrap" id="top">
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Snell is served as an HTML document. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- the homepage is served as an HTML document. */}
         <a className="case__back" href="/#work">← All work</a>
 
         <header className="case__head">
