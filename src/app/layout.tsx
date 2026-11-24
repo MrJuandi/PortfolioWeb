@@ -10,7 +10,7 @@ import './globals.css';
 
 const serif = Instrument_Serif({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'], variable: '--font-serif' });
 
-const site = 'https://portfolio-web-bay-sigma.vercel.app';
+const site = 'https://juandiegodiaz.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),
