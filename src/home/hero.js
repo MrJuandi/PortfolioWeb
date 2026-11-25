@@ -69,7 +69,7 @@
       ${INFERNO}
       void main() {
         float shade = aInfo.x, rand = aInfo.z;
-        float lit = step(aFire.x, uTime), heat = lit * exp(-(uTime - aFire.x) / 700.0), wet = step(aFire.y, uTime);
+        float lit = step(aFire.x, uTime), heat = lit * exp(-max(uTime - aFire.x, 0.0) / 700.0), wet = step(aFire.y, uTime);
         float flick = fract(sin(rand * 913.7 + floor(uClock * 8.0) * 3.17) * 43758.5453);
         vec3 p = aPos;
         float alpha = smoothstep(0.0, 0.03, aInfo.w);
