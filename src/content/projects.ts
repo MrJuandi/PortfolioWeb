@@ -138,7 +138,7 @@ export const projects: Project[] = [
     description:
       'Pre-match 1X2 probabilities for Europe’s top five leagues. Halfline strips the bookmaker margin from the odds and compares what’s left with its own models — xG-adjusted Elo, Dixon-Coles and meta-models — all evaluated out of sample.',
     detail:
-      'Built so far: a data pipeline over six sources, a read-only API and a React app with match sheets, xG, playing-style maps and model evaluation. On 2,049 unseen matches the closing market still leads (log-loss 0.975 vs 0.993).',
+      'Built so far: a data pipeline over six sources, a read-only API and a React app with match sheets, xG, playing-style maps and model evaluation. On 2,252 unseen matches the pre-close market still leads (log-loss 0.970 vs 0.987).',
     tags: ['Python', 'scikit-learn', 'Flask', 'React', 'TypeScript', 'd3'],
     video: '/media/halfline.mp4',
     image: '/media/halfline.jpg',
@@ -162,7 +162,7 @@ export const projects: Project[] = [
       {
         label: 'Results so far',
         body: [
-          'Out of sample, on 2,049 matches across two seasons: closing market 0.975 log-loss, xG-adjusted Elo 0.993, historical frequencies 1.071. The market still leads, and that is reported as it is.',
+          'Out of sample, on 2,252 matches across two seasons: pre-close market 0.970 log-loss, xG-adjusted Elo 0.987, historical frequencies 1.069. The market still leads, and that is reported as it is.',
         ],
       },
     ],

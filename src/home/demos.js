@@ -223,7 +223,7 @@
   const TEAMS = ['Fiorentina', 'Draw', 'Juventus'], ODDS = [3.36, 3.53, 2.06], SHADES = [C.plum, '#5d566b', C.warm];
   const halfline = {
     length: 15, still: 8.6,
-    captions: [[0, 'Fiorentina v Juventus. The odds add up to 106.6%.', 'Serie A, 8 Nov 2026'], [4.6, 'Halfline removes the margin, then asks its own model.', 'Serie A, 8 Nov 2026'], [9.6, 'On 2,049 unseen matches, the market is still ahead.', 'Out of sample']],
+    captions: [[0, 'Fiorentina v Juventus. The odds add up to 106.6%.', 'Serie A, 8 Nov 2026'], [4.6, 'Halfline removes the margin, then asks its own model.', 'Serie A, 8 Nov 2026'], [9.6, 'On 2,252 unseen matches, the market is still ahead.', 'Out of sample']],
     draw(g, W, H, t) {
       const small = W < 520, pad = small ? 16 : 36, full = W - pad * 2, unit = full / 110; // 110% across
       const at100 = pad + 100 * unit;
@@ -268,13 +268,13 @@
       a = seg(t, 9.6, 10);
       if (a > 0) {
         g.globalAlpha = a;
-        const x0 = pad + (small ? 0 : 190), x1 = W - pad - 46, px = v => mix(x0, x1, (v - .965) / .12);
+        const x0 = pad + (small ? 0 : 190), x1 = W - pad - 46, px = v => mix(x0, x1, (v - .96) / .12);
         g.fillStyle = C.track; for (let v = 0; v <= 12; v++) g.fillRect(mix(x0, x1, v / 12), H * .12, 1, H * .7);
-        g.fillStyle = C.ink; g.fillRect(px(.975), H * .12, 1, H * .7);
-        [['Closing market', .975, C.ink], ['xG-adjusted Elo', .993, C.hot], ['Historical frequencies', 1.071, C.plum]].forEach(([name, value, color], i) => {
+        g.fillStyle = C.ink; g.fillRect(px(.97), H * .12, 1, H * .7);
+        [['Pre-close market', .97, C.ink], ['xG-adjusted Elo', .987, C.hot], ['Historical frequencies', 1.069, C.plum]].forEach(([name, value, color], i) => {
           const y = H * (.25 + i * .23), x = mix(x1, px(value), ease(seg(t, 10 + i * .3, 11.4 + i * .3)));
           text(g, name, pad, small ? y - 22 : y, { color: C.soft });
-          if (i) cells(g, px(.975), y - 2, 0, x - px(.975), 4, color);
+          if (i) cells(g, px(.97), y - 2, 0, x - px(.97), 4, color);
           g.fillStyle = color; g.fillRect(x - 7, y - 7, 14, 14);
           if (t > 11 + i * .3) text(g, value.toFixed(3), x + 14, y, { size: 13, weight: 500, color: C.ink });
         });
