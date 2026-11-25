@@ -170,4 +170,3 @@ export const projects: Project[] = [
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
-export const isLive = (s: string) => /progress/i.test(s);
