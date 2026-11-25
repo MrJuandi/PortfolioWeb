@@ -9,9 +9,12 @@
   let data;
   try {
     data = await episode;
+    intro.load(.6);
     await document.fonts.load('500 24px "Martian Mono"').catch(() => {});
+    intro.load(.85);
   } catch {
     status.textContent = 'The replay could not be loaded. Final results are listed below.';
+    intro.load(1);
     play.disabled = seek.disabled = true;
     return;
   }
@@ -35,6 +38,10 @@
   // ───────── WebGL scene ─────────
   const gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false });
   const scene = gl && build();
+  let grow = intro.active && scene ? 0 : 1, growing = 0; // 0: characters in the air, 1: terrain in place
+  intro.play(() => { growing = performance.now(); start(); });
+  intro.skipped(() => { grow = 1; growing = 0; paint(); start(); });
+  intro.load(1);
   if (scene) status.hidden = true;
   else status.textContent = 'This browser cannot draw the 3D terrain. Results are listed below.';
 
@@ -64,15 +71,19 @@
     const land = compile(`
       precision highp float;
       attribute vec3 aPos; attribute vec4 aInfo; attribute vec3 aFire;
-      uniform mat4 uView; uniform float uTime, uClock, uPx; uniform mediump float uMode;
+      uniform mat4 uView; uniform float uTime, uClock, uPx, uGrow; uniform mediump float uMode;
       varying vec4 vColor; varying float vGlyph;
       ${INFERNO}
       void main() {
         float shade = aInfo.x, rand = aInfo.z;
+        // The terrain assembles outwards from its centre
+        float g = smoothstep(0.0, 1.0, clamp(uGrow * 2.4 - 0.3 - length(aPos.xz) * 0.5 - rand * 0.35, 0.0, 1.0));
         float lit = step(aFire.x, uTime), heat = lit * exp(-max(uTime - aFire.x, 0.0) / 700.0), wet = step(aFire.y, uTime);
         float flick = fract(sin(rand * 913.7 + floor(uClock * 8.0) * 3.17) * 43758.5453);
         vec3 p = aPos;
-        float alpha = smoothstep(0.0, 0.03, aInfo.w);
+        p.y = aPos.y * g + (uMode < 0.5 ? 0.0 : (1.0 - g) * (0.35 + rand * 0.7));
+        lit *= step(0.95, g); heat *= step(0.95, g);
+        float alpha = smoothstep(0.0, 0.03, aInfo.w) * clamp(uGrow * 6.0 - rand, 0.0, 1.0);
         if (uMode < 0.5) {
           p.y -= 0.012;
           vColor = vec4(mix(vec3(0.043, 0.039, 0.063), clamp(inferno(0.12 + heat * 0.3), 0.0, 1.0), lit * 0.9), 1.0);
@@ -84,7 +95,7 @@
           vec3 fire = clamp(inferno(clamp(0.42 + heat * 0.56 + (flick - 0.5) * heat * 0.24, 0.0, 1.0)), 0.0, 1.0);
           c = mix(c, vec3(0.361, 0.784, 0.918), wet * (1.0 - lit));
           c = mix(c, fire, lit);
-          float terrain = mix(floor(shade * 6.9), 5.0, aInfo.y);
+          float terrain = max(mix(floor(shade * 6.9), 5.0, aInfo.y), floor((1.0 - g) * (1.0 + rand * 6.0)));
           float burning = 2.0 + floor(clamp(heat * 0.65 + rand * 0.35, 0.0, 1.0) * 7.9);
           vGlyph = mix(mix(terrain, 10.0, wet), burning, lit);
           vColor = vec4(c, alpha);
@@ -162,8 +173,9 @@
 
   // Column-major view-projection: orbit camera with a lens shift so the terrain leaves room for the name.
   function camera() {
-    const wide = width > 840, aspect = width / height, fov = wide ? .62 : .72;
-    const yaw = -.55 + Math.sin(clock * .12) * .2 + look[0] * .16, pitch = (wide ? .7 : .74) + look[1] * .07, distance = wide ? Math.max(2.35, 4.4 / aspect) : clamp(2.2 / aspect, 2.7, 4.1);
+    const ease = 1 - Math.pow(1 - grow, 3), away = 1 - ease, wide = width > 840, aspect = width / height, fov = wide ? .62 : .72;
+    const yaw = -.55 - away * .7 + Math.sin(clock * .12) * .2 + look[0] * .16, pitch = (wide ? .7 : .74) + away * .4 + look[1] * .07;
+    const distance = (wide ? Math.max(2.35, 4.4 / aspect) : clamp(2.2 / aspect, 2.7, 4.1)) * (1 + away * .3);
     const target = [-.22, .18, -.12];
     const eye = [target[0] + Math.sin(yaw) * Math.cos(pitch) * distance, target[1] + Math.sin(pitch) * distance, target[2] + Math.cos(yaw) * Math.cos(pitch) * distance];
     const z = norm([eye[0] - target[0], eye[1] - target[1], eye[2] - target[2]]), x = norm(cross([0, 1, 0], z)), y = cross(z, x);
@@ -218,7 +230,7 @@
     const feed = (name, b, size) => { gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.enableVertexAttribArray(land.at[name]); gl.vertexAttribPointer(land.at[name], size, gl.FLOAT, false, 0, 0); };
     feed('aPos', buffers.pos, 3); feed('aInfo', buffers.info, 4); feed('aFire', buffers.fire[current], 3);
     gl.uniformMatrix4fv(land.at.uView, false, matrix);
-    gl.uniform1f(land.at.uTime, time); gl.uniform1f(land.at.uClock, clock); gl.uniform1f(land.at.uPx, scene.spacing * pixels * 1.55);
+    gl.uniform1f(land.at.uTime, time); gl.uniform1f(land.at.uClock, clock); gl.uniform1f(land.at.uGrow, grow); gl.uniform1f(land.at.uPx, scene.spacing * pixels * 1.55);
     gl.uniform1f(land.at.uMode, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.index);
     gl.drawElements(gl.TRIANGLES, scene.indices, gl.UNSIGNED_SHORT, 0);
@@ -226,7 +238,7 @@
     gl.uniform1f(land.at.uMode, 1); gl.drawArrays(gl.POINTS, 0, scene.count);
     gl.uniform1f(land.at.uMode, 2); gl.drawArrays(gl.POINTS, 0, scene.count);
     const points = sparks();
-    if (points.length) {
+    if (points.length && grow === 1) {
       gl.useProgram(spark.program);
       gl.bindBuffer(gl.ARRAY_BUFFER, buffers.sparks); gl.bufferData(gl.ARRAY_BUFFER, points, gl.DYNAMIC_DRAW);
       [['aPos', 3, 0], ['aColor', 4, 12], ['aSize', 1, 28]].forEach(([name, size, offset]) => { gl.enableVertexAttribArray(spark.at[name]); gl.vertexAttribPointer(spark.at[name], size, gl.FLOAT, false, 32, offset); });
@@ -258,6 +270,14 @@
     if (!playing || !visible || document.querySelector('dialog[open]')) return;
     const step = Math.min(100, now - last) / 1000;
     last = now;
+    if (growing) {
+      grow = clamp((now - growing) / 2100, 0, 1);
+      if (grow === 1) growing = 0;
+      paint();
+      frame = requestAnimationFrame(loop);
+      return;
+    }
+    if (grow < 1) return; // still behind the loader
     clock += step;
     if (time < END) time = Math.min(END, time + step * SPEED);
     else if ((hold += step) > HOLD) {

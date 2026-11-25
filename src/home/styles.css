@@ -38,6 +38,21 @@ a:hover { text-decoration-color: currentColor; }
 .btn--main { background: var(--hot); border-color: var(--hot); color: #17110a; }
 .btn--main:hover { background: var(--ink); border-color: var(--ink); }
 
+/* Intro. Every rule is undone after 7 s even if the script never runs. */
+.loader { display: none; }
+.intro .loader { position: fixed; inset: 0; z-index: 50; display: grid; grid-template: auto 1fr auto auto / auto 1fr; column-gap: 24px; align-items: end; padding: 6px var(--pad) 28px; background: var(--bg); font-family: var(--mono); animation: gone 0s 7s forwards; }
+.loader svg { grid-column: 1 / -1; width: 28px; height: 28px; margin-top: 8px; background: var(--ink); color: var(--bg); }
+.loader__count { grid-row: 3; font: 500 clamp(80px, 17vw, 260px)/.86 var(--mono); font-stretch: 75%; letter-spacing: -.08em; font-variant-numeric: tabular-nums; }
+.loader__label { grid-row: 3; justify-self: end; max-width: 18em; text-align: right; font: 400 12px/1.6 var(--mono); font-stretch: 81%; color: var(--muted); }
+.loader__bar { --p: 0%; grid-row: 4; grid-column: 1 / -1; display: block; height: 22px; margin-top: 28px; background: repeating-linear-gradient(90deg, #262230 0 8px, transparent 8px 12px); }
+.loader__bar i { display: block; height: 100%; background: repeating-linear-gradient(90deg, transparent 0 8px, var(--bg) 8px 12px), linear-gradient(90deg, #65156e, #9f2a63 26%, #d44842 46%, #f57d15 64%, #fac228 82%, #fcffa4); clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.intro.intro-play .loader { clip-path: inset(0 0 100% 0); transition: clip-path 620ms steps(14); pointer-events: none; }
+.intro .hero__lede, .intro .hero__actions, .intro .hero__stage > .sheet, .intro .dock, .intro .nav { opacity: 0; animation: back 0s 7s forwards; }
+.intro.intro-play .nav, .intro.intro-play .hero__lede, .intro.intro-play .hero__actions, .intro.intro-play .hero__stage > .sheet, .intro.intro-play .dock { opacity: 1; transition: opacity 500ms 900ms; }
+.intro.intro-play .hero__actions { transition-delay: 1050ms; } .intro.intro-play .hero__stage > .sheet { transition-delay: 1200ms; } .intro.intro-play .dock { transition-delay: 1350ms; }
+@keyframes gone { to { visibility: hidden; } }
+@keyframes back { to { opacity: 1; } }
+
 /* Spec sheet: key ..... value */
 .sheet { font: 400 12px/1.6 var(--mono); font-stretch: 81%; }
 .sheet > div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 1ch; padding-block: 3px; }
