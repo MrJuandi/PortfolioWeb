@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0a10" />
   <meta name="description" content="Engineer in Madrid. I build ML models, data pipelines and the software around them." />
   <meta property="og:title" content="Juan Diego Díaz Hidalgo — Engineer" />
   <meta property="og:description" content="Engineer in Madrid. I build ML models, data pipelines and the software around them." />
@@ -12,135 +13,273 @@
   <title>Juan Diego Díaz Hidalgo — Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/data/pandion-episode.json" as="fetch" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Martian+Mono:wdth,wght@75..112.5,300..600&display=swap" rel="stylesheet" />
   <style>/* home:styles */</style>
 </head>
 <body>
-  <a class="burger magnet" href="#contact" id="burger" aria-label="Menu"><i></i><i></i></a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <a class="brand" href="#top">Juan Diego Díaz Hidalgo</a>
-    <nav class="nav__links"><a href="#work">Work</a><a href="#path">Path</a><a href="#contact">Contact</a></nav>
-  </header>
+  <div class="frame" id="top">
+    <header class="nav">
+      <a class="nav__brand" href="#top" aria-label="Juan Diego Díaz Hidalgo, back to top">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>
+      </a>
+      <nav class="nav__links" aria-label="Primary"><a href="#path">Path</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+      <span class="nav__clock">Madrid <time id="clock">--:--</time></span>
+    </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <canvas class="hero__fx" id="fx" aria-hidden="true"></canvas>
-      <h1>Juan Diego<br />Díaz Hidalgo</h1>
-      <p class="hero__role">Engineer · ML, data &amp; software</p>
-      <p class="hero__location">Madrid, Spain</p>
-    </section>
-
-    <!-- INTRO -->
-    <section class="intro" id="about">
-      <p class="intro__big" id="big">I build ML models, data pipelines and the software around them — and get them in front of the people who make the decisions.</p>
-      <p class="intro__side">Telecom engineer with a business analytics background. MSc at ICAI; previously at BCG X and Enérgya-VM.</p>
-      <a class="intro__btn magnet round" href="#contact"><span>About me</span></a>
-    </section>
-
-    <!-- PATH -->
-    <section class="path" id="path">
-      <div class="path__head"><span class="small">PATH</span></div>
-      <div class="vt-cols">
-        <div class="vt">
-          <h3 class="vt__title">Professional</h3>
-          <ol class="vt__list">
-            <li class="vt__item"><span class="vt__dot"></span><span class="vt__when">Jun — Aug 2026</span><strong>BCG X</strong><span class="vt__role">Visiting Forward Deployed AI Scientist · Boston Consulting Group, Madrid</span></li>
-            <li class="vt__item"><span class="vt__dot"></span><span class="vt__when">Jun 2025 — Apr 2026</span><strong>Enérgya-VM</strong><span class="vt__role">Data Analyst Intern · Energy retail, Madrid</span></li>
-          </ol>
+    <main id="main">
+      <section class="hero">
+        <div class="hero__id">
+          <h1>Juan Diego<br />Díaz Hidalgo</h1>
+          <p class="hero__lede">I build ML models, data pipelines and the software around them, and get them in front of the people who make the decisions.</p>
+          <dl class="sheet">
+            <div><dt>now</dt><dd>MSc Telecom Engineering, Comillas ICAI</dd></div>
+            <div><dt>before</dt><dd>BCG X, Enérgya-VM</dd></div>
+            <div><dt>based</dt><dd>Madrid, Spain</dd></div>
+          </dl>
+          <p class="hero__actions"><a class="btn btn--main" href="mailto:juandiegodiazh@hotmail.es">Get in touch</a><a class="btn" href="#projects">See the projects</a></p>
         </div>
-        <div class="vt">
-          <h3 class="vt__title">Education</h3>
-          <ol class="vt__list">
-            <li class="vt__item is-now vt__item--edu"><span class="vt__dot"></span><span class="vt__when">2025 — Now</span><strong>MSc Telecommunications Engineering</strong><span class="vt__role">Comillas ICAI, Madrid</span></li>
-            <li class="vt__item vt__item--edu"><span class="vt__dot"></span><span class="vt__when">2020 — 2025</span><strong>Double Bachelor’s in Telecom Engineering &amp; Business Analytics</strong><span class="vt__role">Comillas ICAI-ICADE, Madrid</span></li>
-          </ol>
-        </div>
-      </div>
-      <div class="path__tools"><span>Python</span><span>SQL</span><span>Machine learning</span><span>Power BI</span><span>Next.js</span><span>GCP</span><span>Kubernetes</span></div>
-    </section>
 
-    <!-- Selected work -->
-    <section class="work" id="work" aria-labelledby="work-title">
-      <h2 class="work__head" id="work-title">Selected work</h2>
-      <div class="work__list">
-        <details class="project" name="selected-work">
-          <summary class="project__summary">
-            <span class="project__title">Pandion</span>
-            <span class="project__status">Work in progress · 2026</span>
-            <span class="project__sign" aria-hidden="true"></span>
-          </summary>
-          <div class="project__body">
-            <p>A reinforcement-learning policy decides where and when a water-dropping aircraft acts, evaluated against transparent baselines on real terrain from past fires.</p>
-            <a class="project__link" href="/work/pandion" aria-label="Read the Pandion case study">Case study ↗</a>
-            <video class="project__demo" data-src="/media/pandion.mp4" poster="/media/pandion.jpg" width="1920" height="1080"
-              controls muted playsinline preload="none" aria-label="Pandion demo"></video>
+        <section class="sim" aria-labelledby="sim-title">
+          <header class="sim__head">
+            <h2 id="sim-title">One wildfire, three decisions</h2>
+            <p>Plasencia, Spain. One simulated hour, replayed from <a href="/work/pandion">Pandion</a>.</p>
+          </header>
+          <div class="sim__map">
+            <canvas id="map" role="img" aria-label="Replay of a simulated wildfire over real terrain near Plasencia. After one hour the learned policy leaves 166 hectares burned, the downwind rule 279 and no aircraft 336."></canvas>
+            <p class="sim__status" id="map-status">Loading terrain</p>
           </div>
-        </details>
-        <details class="project" name="selected-work">
-          <summary class="project__summary">
-            <span class="project__title">Pulse</span>
-            <span class="project__status">Shipped · 2026</span>
-            <span class="project__sign" aria-hidden="true"></span>
-          </summary>
-          <div class="project__body">
+          <div class="sim__side">
+            <div class="runs" role="group" aria-label="Controller shown on the map">
+              <button class="run" type="button" data-run="learned" aria-pressed="true" style="--w:49.4%"><span class="run__name">Learned policy</span><span class="run__ha"><b>166</b> ha</span><span class="bar"><i></i></span></button>
+              <button class="run" type="button" data-run="heuristic" aria-pressed="false" style="--w:83%"><span class="run__name">Downwind rule</span><span class="run__ha"><b>279</b> ha</span><span class="bar"><i></i></span></button>
+              <button class="run" type="button" data-run="none" aria-pressed="false" style="--w:100%"><span class="run__name">No aircraft</span><span class="run__ha"><b>336</b> ha</span><span class="bar"><i></i></span></button>
+            </div>
+            <div class="sim__key">
+              <p class="ramp"><span>just lit</span><i></i><span>1 h ago</span></p>
+              <p><span class="k k--water">≈</span> cell blocked by water</p>
+              <p><span class="k k--plane">▲</span> aircraft</p>
+              <p><span class="k k--ghost"></span> burned with no aircraft</p>
+            </div>
+            <p class="sim__note">An illustrative held-out episode, not the average. The policy and the rule each made 16 drops (98,192 L). Wind and ignitions are synthetic. Elevation: IGN/CNIG.</p>
+          </div>
+          <div class="sim__time">
+            <button class="btn btn--play" type="button" id="play">Pause</button>
+            <input type="range" id="seek" min="0" max="3600" step="30" value="0" aria-label="Simulated time" />
+            <output id="t" for="seek">t + 00 min</output>
+          </div>
+        </section>
+      </section>
+
+      <section class="block path" id="path" aria-labelledby="path-title">
+        <h2 class="head" id="path-title">Path</h2>
+        <div class="vt-cols">
+          <div class="vt">
+            <h3 class="vt__title">Professional</h3>
+            <ol class="vt__list">
+              <li class="vt__item"><span class="vt__dot" aria-hidden="true"></span><span class="vt__when">Jun – Aug 2026</span><strong>BCG X</strong><span class="vt__role">Visiting Forward Deployed AI Scientist. Boston Consulting Group, Madrid.</span></li>
+              <li class="vt__item"><span class="vt__dot" aria-hidden="true"></span><span class="vt__when">Jun 2025 – Apr 2026</span><strong>Enérgya-VM</strong><span class="vt__role">Data Analyst Intern. Energy retail, Madrid.</span></li>
+            </ol>
+          </div>
+          <div class="vt">
+            <h3 class="vt__title">Education</h3>
+            <ol class="vt__list vt__list--edu">
+              <li class="vt__item is-now"><span class="vt__dot" aria-hidden="true"></span><span class="vt__when">2025 – now</span><strong>MSc Telecommunications Engineering</strong><span class="vt__role">Comillas ICAI, Madrid.</span></li>
+              <li class="vt__item"><span class="vt__dot" aria-hidden="true"></span><span class="vt__when">2020 – 2025</span><strong>Double Bachelor’s in Telecom Engineering &amp; Business Analytics</strong><span class="vt__role">Comillas ICAI-ICADE, Madrid.</span></li>
+            </ol>
+          </div>
+        </div>
+        <ul class="path__tools" aria-label="Tools"><li>Python</li><li>SQL</li><li>Machine learning</li><li>Power BI</li><li>Next.js</li><li>GCP</li><li>Kubernetes</li></ul>
+      </section>
+
+      <section class="block" id="projects" aria-labelledby="projects-title">
+        <h2 class="head" id="projects-title">Projects</h2>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>Pandion</h3>
+            <p>A reinforcement-learning policy decides where and when water-dropping aircraft act, evaluated against transparent baselines on real terrain from past fires.</p>
+            <dl class="sheet">
+              <div><dt>status</dt><dd>research prototype, since Sep 2026</dd></div>
+              <div><dt>stack</dt><dd>Python, PyTorch, geospatial data, Three.js</dd></div>
+              <div><dt>result</dt><dd>beats the downwind rule, ties the hold-aware rule</dd></div>
+            </dl>
+            <p class="project__links"><button class="btn btn--video" type="button" data-demo="pandion" aria-haspopup="dialog"><span aria-hidden="true">▶</span> Watch the video, 22 s</button><a href="/work/pandion" aria-label="Pandion case study">Case study</a><a href="https://github.com/MrJuandi/pandion" target="_blank" rel="noopener" aria-label="Pandion on GitHub">GitHub</a></p>
+          </div>
+          <figure class="mini" data-scene="pandion">
+            <figcaption class="mini__head"><span class="mini__caption" aria-hidden="true"></span><span class="mini__source">Recorded episode, Plasencia</span></figcaption>
+            <div class="mini__stage"><canvas class="mini__canvas" role="img" aria-label="Animated preview of Pandion. The same fire burns under three controllers and ends at 166 hectares with the learned policy, 279 with the downwind rule and 336 with no aircraft. Over 288 unseen scenarios the policy burns 3.09 hectares less than the downwind rule on average and ties the hold-aware rule at minus 0.03."></canvas></div>
+            <div class="mini__time"><button class="btn btn--play" type="button" data-name="Pandion">Pause</button><input type="range" min="0" step="0.1" value="0" aria-label="Pandion preview position" /><output></output></div>
+          </figure>
+        </article>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>Pulse</h3>
             <p>A macOS menu bar app that shows the quota left in Codex, Claude Code and Gemini, with a daily token chart from each tool’s local history.</p>
-            <a class="project__link" href="/work/pulse" aria-label="Read the Pulse case study">Case study ↗</a>
-            <video class="project__demo" data-src="/media/pulse.mp4" poster="/media/pulse.jpg" width="1920" height="1080"
-              controls muted playsinline preload="none" aria-label="Pulse demo"></video>
+            <dl class="sheet">
+              <div><dt>status</dt><dd>shipped, Nov 2026</dd></div>
+              <div><dt>stack</dt><dd>Swift, SwiftUI, Swift Charts, AppKit</dd></div>
+              <div><dt>result</dt><dd>universal app, no third-party packages</dd></div>
+            </dl>
+            <p class="project__links"><button class="btn btn--video" type="button" data-demo="pulse" aria-haspopup="dialog"><span aria-hidden="true">▶</span> Watch the video, 21 s</button><a href="/work/pulse" aria-label="Pulse case study">Case study</a><a href="https://github.com/MrJuandi/pulse" target="_blank" rel="noopener" aria-label="Pulse on GitHub">GitHub</a></p>
           </div>
-        </details>
-        <details class="project" name="selected-work">
-          <summary class="project__summary">
-            <span class="project__title">LOSSIA</span>
-            <span class="project__status">Shipped · Hackathon · 2026</span>
-            <span class="project__sign" aria-hidden="true"></span>
-          </summary>
-          <div class="project__body">
+          <figure class="mini" data-scene="pulse">
+            <figcaption class="mini__head"><span class="mini__caption" aria-hidden="true"></span><span class="mini__source">Demo data</span></figcaption>
+            <div class="mini__stage"><canvas class="mini__canvas" role="img" aria-label="Animated preview of Pulse, with demo data. The menu bar shows 53% left in Codex, 39% in Claude Code and 88% in Gemini. A click opens the daily token chart and the 5-hour and weekly limits."></canvas></div>
+            <div class="mini__time"><button class="btn btn--play" type="button" data-name="Pulse">Pause</button><input type="range" min="0" step="0.1" value="0" aria-label="Pulse preview position" /><output></output></div>
+          </figure>
+        </article>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>LOSSIA</h3>
             <p>Ranks a 91-station engine line by estimated engines lost per day, replacing a manual Excel exercise with one criterion for every plant.</p>
-            <a class="project__link" href="/work/lossia" aria-label="Read the LOSSIA case study">Case study ↗</a>
-            <video class="project__demo" data-src="/media/lossia.mp4" poster="/media/lossia.jpg" width="1920" height="1080"
-              controls muted playsinline preload="none" aria-label="LOSSIA demo"></video>
+            <dl class="sheet">
+              <div><dt>status</dt><dd>shipped at the ICAI × HORSE hackathon, Nov 2026</dd></div>
+              <div><dt>stack</dt><dd>Python, pandas, React, TypeScript</dd></div>
+              <div><dt>result</dt><dd>one ranked list, pending plant-floor validation</dd></div>
+            </dl>
+            <p class="project__links"><button class="btn btn--video" type="button" data-demo="lossia" aria-haspopup="dialog"><span aria-hidden="true">▶</span> Watch the video, 23 s</button><a href="/work/lossia" aria-label="LOSSIA case study">Case study</a></p>
           </div>
-        </details>
-        <details class="project" name="selected-work">
-          <summary class="project__summary">
-            <span class="project__title">Halfline</span>
-            <span class="project__status">Work in progress · 2026</span>
-            <span class="project__sign" aria-hidden="true"></span>
-          </summary>
-          <div class="project__body">
+          <figure class="mini" data-scene="lossia">
+            <figcaption class="mini__head"><span class="mini__caption" aria-hidden="true"></span><span class="mini__source">Line 5, estimates</span></figcaption>
+            <div class="mini__stage"><canvas class="mini__canvas" role="img" aria-label="Animated preview of LOSSIA. From 91 stations it zooms into station ST-0260, whose stop blocks the stations before it and starves the one after, then ranks the line by engines lost per day: ST-0260 about 46, ST_0100 24, ST-2390 23, ST-1000 23 and ST0261 17."></canvas></div>
+            <div class="mini__time"><button class="btn btn--play" type="button" data-name="LOSSIA">Pause</button><input type="range" min="0" step="0.1" value="0" aria-label="LOSSIA preview position" /><output></output></div>
+          </figure>
+        </article>
+
+        <article class="project">
+          <div class="project__text">
+            <h3>Halfline</h3>
             <p>Strips the bookmaker margin from football odds and measures its own models against the market, out of sample.</p>
-            <a class="project__link" href="/work/halfline" aria-label="Read the Halfline case study">Case study ↗</a>
-            <video class="project__demo" data-src="/media/halfline.mp4" poster="/media/halfline.jpg" width="1920" height="1080"
-              controls muted playsinline preload="none" aria-label="Halfline demo"></video>
+            <dl class="sheet">
+              <div><dt>status</dt><dd>in progress, since Sep 2026</dd></div>
+              <div><dt>stack</dt><dd>Python, scikit-learn, Flask, React, d3</dd></div>
+              <div><dt>result</dt><dd>the market still leads, and that is reported as it is</dd></div>
+            </dl>
+            <p class="project__links"><button class="btn btn--video" type="button" data-demo="halfline" aria-haspopup="dialog"><span aria-hidden="true">▶</span> Watch the video, 22 s</button><a href="/work/halfline" aria-label="Halfline case study">Case study</a><a href="https://github.com/MrJuandi/halfline" target="_blank" rel="noopener" aria-label="Halfline on GitHub">GitHub</a></p>
           </div>
-        </details>
-      </div>
-    </section>
+          <figure class="mini" data-scene="halfline">
+            <figcaption class="mini__head"><span class="mini__caption" aria-hidden="true"></span><span class="mini__source">Serie A, 8 Nov 2026</span></figcaption>
+            <div class="mini__stage"><canvas class="mini__canvas" role="img" aria-label="Animated preview of Halfline. The odds for Fiorentina v Juventus imply 29.8, 28.3 and 48.5 percent, 106.6 in total. Without the margin the market says 27.5, 26.1 and 46.3; the model says 25.0, 27.4 and 47.6. On 2,049 unseen matches log-loss is 0.975 for the closing market, 0.993 for xG-adjusted Elo and 1.071 for historical frequencies."></canvas></div>
+            <div class="mini__time"><button class="btn btn--play" type="button" data-name="Halfline">Pause</button><input type="range" min="0" step="0.1" value="0" aria-label="Halfline preview position" /><output></output></div>
+          </figure>
+        </article>
+      </section>
 
-    <!-- FOOTER -->
-    <div class="curve"><div class="curve__shape" id="curve"></div></div>
-    <footer class="footer" id="contact">
-      <div class="footer__top">
-        <span class="footer__mark"><svg viewBox="0 0 64 64"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="square"/></svg></span>
-        <h2>Let’s work<br />together</h2>
-      </div>
-      <div class="footer__line"><div class="footer__cta"><a class="round magnet" href="mailto:juandiegodiazh@hotmail.es"><span>Get in touch</span></a></div></div>
-      <div class="footer__pills">
-        <a class="pill magnet" href="mailto:juandiegodiazh@hotmail.es"><span>juandiegodiazh@hotmail.es</span></a>
-        <a class="pill magnet" href="https://www.linkedin.com/in/juan-diego-diaz-hidalgo" target="_blank" rel="noopener"><span>LinkedIn</span></a>
-      </div>
-      <div class="footer__bottom">
-        <div><span class="small">BASED IN</span><span>Madrid, Spain</span></div>
-        <div><span class="small">SOCIALS</span><nav><a href="https://www.linkedin.com/in/juan-diego-diaz-hidalgo" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/MrJuandi" target="_blank" rel="noopener">GitHub</a></nav></div>
-      </div>
-    </footer>
-  </main>
+      <footer class="block contact" id="contact">
+        <h2>Let’s work together</h2>
+        <p class="contact__mail"><a href="mailto:juandiegodiazh@hotmail.es">juandiegodiazh@hotmail.es</a><button class="btn" type="button" id="copy">Copy email</button></p>
+        <p class="contact__links"><a href="https://www.linkedin.com/in/juan-diego-diaz-hidalgo" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/MrJuandi" target="_blank" rel="noopener">GitHub</a><a href="#top">Back to top</a></p>
+      </footer>
+    </main>
+  </div>
 
+  <dialog class="demo" id="demo-pandion" aria-labelledby="demo-pandion-title">
+    <div class="demo__box">
+      <header class="demo__head"><h2 id="demo-pandion-title">Pandion</h2><button class="btn" type="button" data-close>Close</button></header>
+      <video data-src="/media/pandion.mp4" poster="/media/pandion.jpg" width="1920" height="1080" controls playsinline preload="none" aria-label="Pandion video, music only"></video>
+      <div class="demo__body">
+        <div class="demo__use">
+          <p class="demo__label">Use case</p>
+          <h3>Where should the next drop go?</h3>
+          <p>Two aircraft, three ignitions and one hour. Every order is given with information that arrives late. The same fire is run under a learned policy, a downwind rule and no aircraft, so what changes is only the decision.</p>
+          <p class="demo__note">Research prototype, not an operational tool.</p>
+          <p><a href="/work/pandion">Read the Pandion case study</a></p>
+        </div>
+        <div class="demo__chapters">
+          <p class="demo__label">In the video</p>
+          <ol>
+              <li><button type="button" data-at="5.4"><span>0:05</span><strong>Three decisions</strong><em>The same hour plays side by side.</em></button></li>
+              <li><button type="button" data-at="11"><span>0:11</span><strong>What burned</strong><em>166, 279 and 336 ha, with the same water.</em></button></li>
+              <li><button type="button" data-at="13.6"><span>0:13</span><strong>Replay in 3D</strong><em>Inspect each drop on real terrain.</em></button></li>
+              <li><button type="button" data-at="17.2"><span>0:17</span><strong>The average</strong><em>How it holds up over 288 unseen scenarios.</em></button></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <dialog class="demo" id="demo-pulse" aria-labelledby="demo-pulse-title">
+    <div class="demo__box">
+      <header class="demo__head"><h2 id="demo-pulse-title">Pulse</h2><button class="btn" type="button" data-close>Close</button></header>
+      <video data-src="/media/pulse.mp4" poster="/media/pulse.jpg" width="1920" height="1080" controls playsinline preload="none" aria-label="Pulse video, music only"></video>
+      <div class="demo__body">
+        <div class="demo__use">
+          <p class="demo__label">Use case</p>
+          <h3>Which tool will cut me off first?</h3>
+          <p>You are in the middle of a task with Codex, Claude Code and Gemini open. Each has its own limits, reported in its own place. Pulse keeps what is left of all three in the menu bar, so you can switch before you hit a wall.</p>
+          <p class="demo__note">Usage figures are demo data.</p>
+          <p><a href="/work/pulse">Read the Pulse case study</a></p>
+        </div>
+        <div class="demo__chapters">
+          <p class="demo__label">In the video</p>
+          <ol>
+              <li><button type="button" data-at="3"><span>0:03</span><strong>A glance</strong><em>Quota left in the tightest window of each tool.</em></button></li>
+              <li><button type="button" data-at="8"><span>0:08</span><strong>Open it</strong><em>Tokens per day, read from local history.</em></button></li>
+              <li><button type="button" data-at="11.2"><span>0:11</span><strong>Look back</strong><em>7, 30 or 90 days, by provider and model.</em></button></li>
+              <li><button type="button" data-at="15.2"><span>0:15</span><strong>See it coming</strong><em>5-hour and weekly limits.</em></button></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="demo" id="demo-lossia" aria-labelledby="demo-lossia-title">
+    <div class="demo__box">
+      <header class="demo__head"><h2 id="demo-lossia-title">LOSSIA</h2><button class="btn" type="button" data-close>Close</button></header>
+      <video data-src="/media/lossia.mp4" poster="/media/lossia.jpg" width="1920" height="1080" controls playsinline preload="none" aria-label="LOSSIA video, music only"></video>
+      <div class="demo__body">
+        <div class="demo__use">
+          <p class="demo__label">Use case</p>
+          <h3>Where do we send maintenance first?</h3>
+          <p>It is the start of the shift on a 91-station engine line, and every Excel file points to a different machine. LOSSIA estimates the engines lost per day at each station, including the waits it causes in its neighbours, and gives everyone the same list.</p>
+          <p class="demo__note">Hypotheses pending validation on the plant floor. The app is in Spanish.</p>
+          <p><a href="/work/lossia">Read the LOSSIA case study</a></p>
+        </div>
+        <div class="demo__chapters">
+          <p class="demo__label">In the video</p>
+          <ol>
+              <li><button type="button" data-at="3"><span>0:03</span><strong>The problem</strong><em>Every file, a different culprit.</em></button></li>
+              <li><button type="button" data-at="7"><span>0:07</span><strong>Start here</strong><em>The console opens on the first intervention.</em></button></li>
+              <li><button type="button" data-at="10"><span>0:10</span><strong>On the line</strong><em>ST-0260 stops and its neighbours wait.</em></button></li>
+              <li><button type="button" data-at="13.6"><span>0:13</span><strong>Why it matters</strong><em>On target, and still about 46 engines a day.</em></button></li>
+              <li><button type="button" data-at="17.4"><span>0:17</span><strong>One ranking</strong><em>The whole line, in one order.</em></button></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="demo" id="demo-halfline" aria-labelledby="demo-halfline-title">
+    <div class="demo__box">
+      <header class="demo__head"><h2 id="demo-halfline-title">Halfline</h2><button class="btn" type="button" data-close>Close</button></header>
+      <video data-src="/media/halfline.mp4" poster="/media/halfline.jpg" width="1920" height="1080" controls playsinline preload="none" aria-label="Halfline video, music only"></video>
+      <div class="demo__body">
+        <div class="demo__use">
+          <p class="demo__label">Use case</p>
+          <h3>What do the odds really say?</h3>
+          <p>Fiorentina v Juventus. The three prices add up to 106.6%, so none of them is a probability yet. Halfline strips the margin, sets its own model next to the market and then checks both on matches they never saw.</p>
+          <p class="demo__note">Work in progress. The app is in Spanish.</p>
+          <p><a href="/work/halfline">Read the Halfline case study</a></p>
+        </div>
+        <div class="demo__chapters">
+          <p class="demo__label">In the video</p>
+          <ol>
+              <li><button type="button" data-at="0.8"><span>0:00</span><strong>The odds</strong><em>Three prices, 106.6% in total.</em></button></li>
+              <li><button type="button" data-at="4"><span>0:04</span><strong>Without the margin</strong><em>Market and model, side by side.</em></button></li>
+              <li><button type="button" data-at="8"><span>0:08</span><strong>In the app</strong><em>Every match in five leagues.</em></button></li>
+              <li><button type="button" data-at="10"><span>0:10</span><strong>Match sheet</strong><em>Fiorentina 2–2 Juventus.</em></button></li>
+              <li><button type="button" data-at="15.2"><span>0:15</span><strong>The check</strong><em>Models scored against the market.</em></button></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <script>/* home:script */</script>
 </body>
 </html>
