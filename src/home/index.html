@@ -16,9 +16,23 @@
   <link rel="preload" href="/data/pandion-episode.json" as="fetch" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Martian+Mono:wdth,wght@75..112.5,300..600&display=swap" rel="stylesheet" />
   <style>/* home:styles */</style>
+  <script>
+    // The intro is the default way in. It is skipped when moving within the site, when opening a section directly and with reduced motion.
+    (() => {
+      const type = performance.getEntriesByType('navigation')[0]?.type;
+      const inside = type === 'back_forward' || (type !== 'reload' && document.referrer.startsWith(location.origin + '/'));
+      if (!location.hash && !inside && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="loader" aria-hidden="true">
+    <svg viewBox="0 0 64 64"><path d="M38 14v22a10 10 0 0 1-20 0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>
+    <p class="loader__count">000</p>
+    <p class="loader__label">Loading 1,600 cells of terrain</p>
+    <span class="loader__bar"><i></i></span>
+  </div>
 
   <div class="frame" id="top">
     <header class="nav">

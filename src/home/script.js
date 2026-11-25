@@ -13,6 +13,65 @@ const episode = fetch('/data/pandion-episode.json').then(response => {
   return response.json();
 });
 
+// ───────── Intro ─────────
+// hero.js reports real loading progress and plays the terrain; any input skips it.
+const intro = (() => {
+  const root = document.documentElement, active = root.classList.contains('intro');
+  const count = document.querySelector('.loader__count'), bar = document.querySelector('.loader__bar');
+  const names = [...document.querySelectorAll('h1 span')], title = document.querySelector('h1');
+  const full = names.map(n => n.textContent), began = performance.now(), MIN = 900;
+  let target = .08, shown = 0, done = !active, onPlay = null, onSkip = null;
+
+  function decode(progress) {
+    const glyphs = '.:-=+*%#@';
+    names.forEach((node, line) => {
+      node.textContent = [...full[line]].map((c, i) => {
+        if (c === ' ') return c;
+        const at = (i + line * 3) / 18;
+        return progress >= at + .25 ? c : progress < at - .1 ? '\u00a0' : glyphs[Math.floor(Math.random() * glyphs.length)];
+      }).join('');
+    });
+  }
+  function finish() {
+    if (done) return;
+    done = true;
+    names.forEach((node, i) => { node.textContent = full[i]; node.removeAttribute('aria-hidden'); });
+    title.removeAttribute('aria-label');
+    root.classList.remove('intro', 'intro-play');
+    ['pointerdown', 'keydown', 'wheel', 'touchmove'].forEach(type => removeEventListener(type, skip));
+  }
+  function skip() { finish(); onSkip?.(); }
+
+  if (active) {
+    // Keep the name readable for assistive technology while the letters scramble.
+    title.setAttribute('aria-label', full.join(' '));
+    names.forEach(node => node.setAttribute('aria-hidden', 'true'));
+    decode(-1);
+    ['pointerdown', 'keydown', 'wheel', 'touchmove'].forEach(type => addEventListener(type, skip, { passive: true }));
+    setTimeout(skip, 6500);
+    let playAt = 0, last = began;
+    const step = now => {
+      if (done) return;
+      if (!playAt) {
+        const cap = Math.min(target, (now - began) / MIN); // never faster than MIN, never ahead of the real load
+        shown += (cap - shown) * Math.min(1, (now - last) / 90);
+        last = now;
+        if (target >= 1 && cap >= 1 && shown > .985) shown = 1;
+        count.textContent = String(Math.round(shown * 100)).padStart(3, '0');
+        bar.style.setProperty('--p', (shown * 100).toFixed(1) + '%');
+        if (shown === 1) { playAt = now; root.classList.add('intro-play'); onPlay?.(); }
+      } else {
+        const t = (now - playAt) / 1000;
+        decode((t - .15) / 1.1);
+        if (t > 2.5) { finish(); return; }
+      }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  return { get active() { return !done; }, load: value => { target = Math.max(target, value); }, play: fn => { onPlay = fn; }, skipped: fn => { onSkip = fn; } };
+})();
+
 // Madrid clock
 const clockFormat = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
 const tick = () => { $('clock').textContent = clockFormat.format(new Date()); };
