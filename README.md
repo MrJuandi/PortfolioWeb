@@ -32,7 +32,7 @@ public/data/      Recorded Pandion episode replayed on the homepage
 
 ## Editing content
 
-- **Homepage:** `src/home/index.html` holds the landing (with the Pandion replay), path, projects and contact. `styles.css`, `script.js` and `demos.js` (project previews and video dialogs) are inlined into it at build time.
+- **Homepage:** `src/home/index.html` holds the landing (with the Pandion replay), path, projects and contact. `styles.css`, `script.js`, `hero.js` (3D fire replay) and `demos.js` (project previews and video dialogs) are inlined into it at build time.
 - **Case studies:** `src/content/projects.ts` holds the sections, tags and status of each `/work/[slug]` page.
 - **Share cards:** generated per page by the `opengraph-image.tsx` files.
 

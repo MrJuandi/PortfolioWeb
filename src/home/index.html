@@ -31,44 +31,35 @@
 
     <main id="main">
       <section class="hero">
+        <div class="hero__stage">
+        <canvas class="hero__map" id="map" role="img" aria-label="Replay of a simulated wildfire over the real relief near Plasencia, Spain. After one hour the learned policy leaves 166 hectares burned, the downwind rule 279 and no aircraft 336."></canvas>
+        <p class="hero__status" id="map-status">Loading terrain</p>
         <div class="hero__id">
-          <h1>Juan Diego<br />Díaz Hidalgo</h1>
+          <h1><span>Juan Diego</span> <span>Díaz Hidalgo</span></h1>
           <p class="hero__lede">I build ML models, data pipelines and the software around them, and get them in front of the people who make the decisions.</p>
-          <dl class="sheet">
+          <p class="hero__actions"><a class="btn btn--main" href="mailto:juandiegodiazh@hotmail.es">Get in touch</a><a class="btn" href="#projects">See the projects</a></p>
+        </div>
+        <dl class="sheet">
             <div><dt>now</dt><dd>MSc Telecom Engineering, Comillas ICAI</dd></div>
             <div><dt>before</dt><dd>BCG X, Enérgya-VM</dd></div>
             <div><dt>based</dt><dd>Madrid, Spain</dd></div>
-          </dl>
-          <p class="hero__actions"><a class="btn btn--main" href="mailto:juandiegodiazh@hotmail.es">Get in touch</a><a class="btn" href="#projects">See the projects</a></p>
+        </dl>
         </div>
-
-        <section class="sim" aria-labelledby="sim-title">
-          <header class="sim__head">
+        <section class="dock" aria-labelledby="sim-title">
+          <div class="dock__about">
             <h2 id="sim-title">One wildfire, three decisions</h2>
-            <p>Plasencia, Spain. One simulated hour, replayed from <a href="/work/pandion">Pandion</a>.</p>
-          </header>
-          <div class="sim__map">
-            <canvas id="map" role="img" aria-label="Replay of a simulated wildfire over real terrain near Plasencia. After one hour the learned policy leaves 166 hectares burned, the downwind rule 279 and no aircraft 336."></canvas>
-            <p class="sim__status" id="map-status">Loading terrain</p>
+            <p>Plasencia, Spain, replayed from <a href="/work/pandion">Pandion</a>. Tinted ground burns with no aircraft; blue is water. An illustrative episode, not the average; wind and ignitions are synthetic. Elevation: IGN/CNIG.</p>
           </div>
-          <div class="sim__side">
-            <div class="runs" role="group" aria-label="Controller shown on the map">
-              <button class="run" type="button" data-run="learned" aria-pressed="true" style="--w:49.4%"><span class="run__name">Learned policy</span><span class="run__ha"><b>166</b> ha</span><span class="bar"><i></i></span></button>
-              <button class="run" type="button" data-run="heuristic" aria-pressed="false" style="--w:83%"><span class="run__name">Downwind rule</span><span class="run__ha"><b>279</b> ha</span><span class="bar"><i></i></span></button>
-              <button class="run" type="button" data-run="none" aria-pressed="false" style="--w:100%"><span class="run__name">No aircraft</span><span class="run__ha"><b>336</b> ha</span><span class="bar"><i></i></span></button>
-            </div>
-            <div class="sim__key">
-              <p class="ramp"><span>just lit</span><i></i><span>1 h ago</span></p>
-              <p><span class="k k--water">≈</span> cell blocked by water</p>
-              <p><span class="k k--plane">▲</span> aircraft</p>
-              <p><span class="k k--ghost"></span> burned with no aircraft</p>
-            </div>
-            <p class="sim__note">An illustrative held-out episode, not the average. The policy and the rule each made 16 drops (98,192 L). Wind and ignitions are synthetic. Elevation: IGN/CNIG.</p>
+          <div class="runs" role="group" aria-label="Controller shown on the map">
+            <button class="run" type="button" data-run="learned" aria-pressed="true" style="--w:49.4%"><span class="run__name">Learned policy</span><span class="run__ha"><b>166</b> ha</span><span class="bar"><i></i></span></button>
+            <button class="run" type="button" data-run="heuristic" aria-pressed="false" style="--w:83%"><span class="run__name">Downwind rule</span><span class="run__ha"><b>279</b> ha</span><span class="bar"><i></i></span></button>
+            <button class="run" type="button" data-run="none" aria-pressed="false" style="--w:100%"><span class="run__name">No aircraft</span><span class="run__ha"><b>336</b> ha</span><span class="bar"><i></i></span></button>
           </div>
-          <div class="sim__time">
+          <div class="dock__time">
             <button class="btn btn--play" type="button" id="play">Pause</button>
             <input type="range" id="seek" min="0" max="3600" step="30" value="0" aria-label="Simulated time" />
             <output id="t" for="seek">t + 00 min</output>
+            <p class="ramp" aria-hidden="true"><span>just lit</span><i></i><span>1 h ago</span></p>
           </div>
         </section>
       </section>
